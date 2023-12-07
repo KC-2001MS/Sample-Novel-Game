@@ -1,0 +1,38 @@
+[
+    {
+        "talker": "ch1",
+        "quote": "this is test text",
+        "characters": ["ch1","ch2"],
+        "background": "background",
+        "voice": "",
+        "primaryBGM": "bgm1",
+        "secondaryBGM": "",
+    },
+    {
+        "talker": "ch2",
+        "quote": "Is text Changed?",
+        "characters": ["ch1","ch2"],
+        "background": "background",
+        "voice": "",
+        "primaryBGM": "bgm2",
+        "secondaryBGM": "",
+    },
+    {
+        "talker": "ch1",
+        "quote": "Changed Again",
+        "characters": ["ch1","ch2"],
+        "background": "background",
+        "voice": "",
+        "primaryBGM": "",
+        "secondaryBGM": "",
+    },
+    {
+        "talker": "ch1",
+        "quote": "Last",
+        "characters": ["ch1","ch2"],
+        "background": "background",
+        "voice": "voice1",
+        "primaryBGM": "",
+        "secondaryBGM": "",
+    }
+]
