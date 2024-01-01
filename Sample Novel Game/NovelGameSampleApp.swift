@@ -9,8 +9,7 @@
 import SwiftUI
 
 @main
-struct Novel_Game_SampleApp: App {
-    
+struct NovelGameSampleApp: App {
     var body: some Scene {
         WindowGroup {
             TitleView()

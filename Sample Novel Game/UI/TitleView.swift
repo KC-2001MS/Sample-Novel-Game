@@ -9,19 +9,21 @@
 import SwiftUI
 
 struct TitleView: View {
-    let sceneList: Array<SceneInfo> = Bundle.main.decodeJSON("game.json")
+    let scenes: Array<NovelScene>
+    
+    init() {
+        self.scenes = Bundle.main.decodeJSON("game.json")
+    }
     
     var body: some View {
         NavigationStack {
-            VStack() {
-                Spacer()
-                    .frame(height: 100)
+            VStack {
                 Text("Novel Game Sample")
                     .font(.largeTitle)
                 
                 Spacer()
                 
-                NavigationLink(destination: GameView(sceneList: sceneList)) {
+                NavigationLink(destination: GameView(scenes: scenes, num: NovelID())) {
                     Text("Start")
                         .font(.title)
                         .frame(width: 200)
@@ -32,11 +34,9 @@ struct TitleView: View {
                     RoundedRectangle(cornerRadius: 20)
                         .foregroundStyle(Material.ultraThin)
                 }
-                
-                Spacer()
-                    .frame(height: 100)
             }
             .padding()
+            .padding(.vertical, 100)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background {

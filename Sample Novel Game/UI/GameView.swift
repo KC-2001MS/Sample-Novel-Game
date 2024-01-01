@@ -10,13 +10,13 @@ import SwiftUI
 
 struct GameView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var novelColtoroler: NovelControler
+    @State private var novelColtoroler: NovelSceneControler
     
     @State private var isShowingToolbar = true
     @State private var isOpeningSettings = false
     
-    init(sceneList: Array<SceneInfo>) {
-        self._novelColtoroler = State(initialValue: NovelControler(sceneList: sceneList))
+    init(scenes: Array<NovelScene>, num: NovelID) {
+        self._novelColtoroler = State(initialValue: NovelSceneControler(scenes: scenes, id: num))
         self.isShowingToolbar = true
         self.isOpeningSettings = false
         novelColtoroler.endAction = {
@@ -24,16 +24,35 @@ struct GameView: View {
         }
     }
     
-    
     var body: some View {
         NavigationStack {
-            ZStack {
                 Image(novelColtoroler.background)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxHeight: .infinity)
                     .overlay {
                         GeometryReader{ geometry in
+                            VStack {
+                                if let choices = novelColtoroler.choices {
+                                    ForEach(choices) { choice in
+                                        Button {
+                                            novelColtoroler.choice(choice: choice)
+                                        } label: {
+                                            Text(choice.word)
+                                                .frame(width: 200)
+                                                .padding()
+                                        }
+                                        .buttonStyle(.borderless)
+                                        .background {
+                                            RoundedRectangle(cornerRadius: 20)
+                                                .foregroundStyle(Material.ultraThin)
+                                        }
+                                    }
+                                }
+                            }
+                            .padding(100)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                            
                             HStack {
                                 ForEach(novelColtoroler.characters, id: \.self) { character in
                                     Image(character)
@@ -47,8 +66,6 @@ struct GameView: View {
                             .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .bottom)
                             
                             HStack {
-                                
-                                
                                 VStack(alignment: .leading) {
                                     Text(novelColtoroler.talker)
                                         .font(.title2)
@@ -64,8 +81,6 @@ struct GameView: View {
                                 .frame(maxWidth: .infinity)
                                 .padding(.horizontal,200)
                                 .padding(.vertical)
-                                
-                                
                             }
                             .frame(height: geometry.size.height / 4)
                             .frame(maxHeight: .infinity,alignment: .bottom)
@@ -89,7 +104,6 @@ struct GameView: View {
                             .opacity(0.2)
                 #endif
                     }
-            }
             .onTapGesture {
                 novelColtoroler.next()
             }
@@ -142,34 +156,6 @@ struct GameView: View {
             #endif
             .toolbar(id: "novel") {
                 if isShowingToolbar {
-//#if !os(macOS)
-//                    ToolbarItem(id: "settings", placement: .topBarLeading) {
-//                        Button(action: {
-//                            isOpeningSettings.toggle()
-//                        }){
-//                            Label("Settings", systemImage: "gear")
-//                        }
-//                        .help("Settings")
-//                        .tint(Color.white.opacity(0.825))
-//                    }
-//#else
-//                    ToolbarItem(id: "title", placement: .navigation) {
-//                        Button(action: {
-////                            dismiss()
-//                        }){
-//                            Label("Title", systemImage: "gear")
-//                        }
-//                        .help("Title")
-//                        .tint(Color.white.opacity(0.825))
-//                    }
-//                    
-//                    ToolbarItem(id: "settings", placement: .navigation) {
-//                        SettingsLink()
-//                            .help("Settings")
-//                            .tint(Color.white.opacity(0.825))
-//                    }
-//#endif
-//                    
                     ToolbarItem(id: "spacer", placement: .primaryAction) {
                         Spacer()
                     }
@@ -364,12 +350,15 @@ struct GameView: View {
         .onDisappear {
             novelColtoroler.stopPlayAll()
         }
+        .onAppear {
+            novelColtoroler.startPlayAll()
+        }
     }
 }
 
-#Preview {
-    let sceneList = [
-        SceneInfo(primaryBGM: "bgm1")
-    ]
-    return GameView(sceneList: sceneList)
-}
+//#Preview {
+//    let sceneList = [
+//        NovelScreen(primaryBGM: "bgm1")
+//    ]
+//    return GameView(scenes: sceneList, num: NovelNum())
+//}

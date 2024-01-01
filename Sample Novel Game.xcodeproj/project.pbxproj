@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F78063D32B1FAF4B00D8C2FE /* Novel_Game_SampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063D22B1FAF4B00D8C2FE /* Novel_Game_SampleApp.swift */; };
+		F78063D32B1FAF4B00D8C2FE /* NovelGameSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063D22B1FAF4B00D8C2FE /* NovelGameSampleApp.swift */; };
 		F78063D52B1FAF4B00D8C2FE /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063D42B1FAF4B00D8C2FE /* GameView.swift */; };
 		F78063D72B1FAF4C00D8C2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F78063D62B1FAF4C00D8C2FE /* Assets.xcassets */; };
 		F78063DB2B1FAF4C00D8C2FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F78063DA2B1FAF4C00D8C2FE /* Preview Assets.xcassets */; };
 		F78063E22B202F7F00D8C2FE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063E12B202F7F00D8C2FE /* SettingsView.swift */; };
-		F78063E42B20323600D8C2FE /* NovelControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063E32B20323600D8C2FE /* NovelControler.swift */; };
 		F78063E62B20861B00D8C2FE /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063E52B20861B00D8C2FE /* Commands.swift */; };
 		F78063E82B21B13F00D8C2FE /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063E72B21B13F00D8C2FE /* TitleView.swift */; };
-		F78063EA2B2221D400D8C2FE /* game.json in Resources */ = {isa = PBXBuildFile; fileRef = F78063E92B2221D400D8C2FE /* game.json */; };
+		F786FA5D2B41D4AE005C8C72 /* game.json in Resources */ = {isa = PBXBuildFile; fileRef = F78063E92B2221D400D8C2FE /* game.json */; };
+		F786FA5E2B41D4B4005C8C72 /* NovelSceneControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063E32B20323600D8C2FE /* NovelSceneControler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F78063CF2B1FAF4B00D8C2FE /* Sample Novel Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample Novel Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F78063D22B1FAF4B00D8C2FE /* Novel_Game_SampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Novel_Game_SampleApp.swift; sourceTree = "<group>"; };
+		F78063D22B1FAF4B00D8C2FE /* NovelGameSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelGameSampleApp.swift; sourceTree = "<group>"; };
 		F78063D42B1FAF4B00D8C2FE /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		F78063D62B1FAF4C00D8C2FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F78063D82B1FAF4C00D8C2FE /* Novel_Game_Sample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Novel_Game_Sample.entitlements; sourceTree = "<group>"; };
 		F78063DA2B1FAF4C00D8C2FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F78063E12B202F7F00D8C2FE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		F78063E32B20323600D8C2FE /* NovelControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelControler.swift; sourceTree = "<group>"; };
+		F78063E32B20323600D8C2FE /* NovelSceneControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelSceneControler.swift; sourceTree = "<group>"; };
 		F78063E52B20861B00D8C2FE /* Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
 		F78063E72B21B13F00D8C2FE /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		F78063E92B2221D400D8C2FE /* game.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = game.json; sourceTree = "<group>"; };
@@ -62,10 +62,10 @@
 		F78063D12B1FAF4B00D8C2FE /* Sample Novel Game */ = {
 			isa = PBXGroup;
 			children = (
-				F78063D22B1FAF4B00D8C2FE /* Novel_Game_SampleApp.swift */,
+				F78063D22B1FAF4B00D8C2FE /* NovelGameSampleApp.swift */,
 				F78063E52B20861B00D8C2FE /* Commands.swift */,
 				F78063EB2B2232C000D8C2FE /* UI */,
-				F78063E32B20323600D8C2FE /* NovelControler.swift */,
+				F78063E32B20323600D8C2FE /* NovelSceneControler.swift */,
 				F78063E92B2221D400D8C2FE /* game.json */,
 				F78063D62B1FAF4C00D8C2FE /* Assets.xcassets */,
 				F78063D82B1FAF4C00D8C2FE /* Novel_Game_Sample.entitlements */,
@@ -151,7 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F78063DB2B1FAF4C00D8C2FE /* Preview Assets.xcassets in Resources */,
-				F78063EA2B2221D400D8C2FE /* game.json in Resources */,
+				F786FA5D2B41D4AE005C8C72 /* game.json in Resources */,
 				F78063D72B1FAF4C00D8C2FE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,10 +164,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F78063E22B202F7F00D8C2FE /* SettingsView.swift in Sources */,
+				F786FA5E2B41D4B4005C8C72 /* NovelSceneControler.swift in Sources */,
 				F78063D52B1FAF4B00D8C2FE /* GameView.swift in Sources */,
-				F78063D32B1FAF4B00D8C2FE /* Novel_Game_SampleApp.swift in Sources */,
+				F78063D32B1FAF4B00D8C2FE /* NovelGameSampleApp.swift in Sources */,
 				F78063E62B20861B00D8C2FE /* Commands.swift in Sources */,
-				F78063E42B20323600D8C2FE /* NovelControler.swift in Sources */,
 				F78063E82B21B13F00D8C2FE /* TitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
