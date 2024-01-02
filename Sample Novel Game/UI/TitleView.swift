@@ -23,7 +23,7 @@ struct TitleView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: GameView(scenes: scenes, num: NovelID())) {
+                NavigationLink(destination: GameView(scenes: scenes, id: NovelID())) {
                     Text("Start")
                         .font(.title)
                         .frame(width: 200)

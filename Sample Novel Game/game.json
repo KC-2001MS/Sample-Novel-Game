@@ -157,25 +157,6 @@
                 "primaryBGM": "",
                 "secondaryBGM": "",
             },
-            {
-                "talker": "ch1",
-                "quote": "Last",
-                "choices": [
-                    {
-                        "word": "test1",
-                        "num": 1
-                    },
-                    {
-                        "word": "test2",
-                        "num": 2
-                    }
-                ],
-                "characters": ["ch1","ch2"],
-                "background": "background",
-                "voice": "voice1",
-                "primaryBGM": "",
-                "secondaryBGM": "",
-            }
         ]
     },
 ]

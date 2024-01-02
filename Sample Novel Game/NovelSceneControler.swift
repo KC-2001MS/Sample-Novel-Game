@@ -15,8 +15,6 @@ import SwiftUI
 final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
     let scenes: Array<NovelScene>
     
-    var id: NovelID? = nil
-    
     var screens: Array<NovelScreen> {
         didSet {
             num = 0
@@ -24,15 +22,10 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
         }
     }
     
+    var id: NovelID? = nil
+    
     @ObservationIgnored
     var num: Int = 1
-    
-    var isPlaying = false
-    
-    var isAutoPlay = false
-    
-    @ObservationIgnored
-    var endAction: () -> Void
     
     var talker = ""
     
@@ -40,7 +33,7 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
     
     var characters: Array<String> = []
     
-    var choices: Array<NovelChoice>? = []
+    var choices: Array<NovelChoice>? = nil
     
     var background = ""
     
@@ -53,20 +46,28 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
     @ObservationIgnored
     private var secondaryBGMPlayer: AVAudioPlayer? = nil
     
+    var isPlaying = false
+    
+    var isAutoPlay = false
+    
+    @ObservationIgnored
+    var endAction: () -> Void
+    
     init(scenes: Array<NovelScene>,screens: Array<NovelScreen>) {
         self.scenes = scenes
-        self.isPlaying = false
         self.screens = screens
-        self.endAction = {}
+        self.num = 1
         self.talker = screens.first?.talker ?? ""
         self.quote = screens.first?.quote ?? ""
         self.characters = screens.first?.characters ?? []
         self.choices = nil
         self.background = screens.first?.background ?? ""
-        self.num = 1
         self.voicePlayer = nil
         self.primaryBGMPlayer = nil
         self.secondaryBGMPlayer = nil
+        self.isPlaying = false
+        self.isAutoPlay = false
+        self.endAction = {}
     }
     
     convenience init(scenes: Array<NovelScene>,id: NovelID) {
@@ -143,11 +144,11 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             self.num += 1
             self.id = scene.nextID
         } else {
-//            if let nextID = id {
-//                if let scene = scenes.first(where: { $0.id == nextID && $0.id.choice == nil}) {
-//                    screens = scene.screens
-//                }
-//            }
+            if let nextID = id, choices == nil {
+                if let scene = scenes.first(where: { $0.id == nextID && $0.id.choice == nil}) {
+                    screens = scene.screens
+                }
+            }
         }
         print(num)
     }
@@ -199,12 +200,14 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
         }
     }
     
+    
+    
     var canNotBack: Bool {
         num - 1 < 1
     }
     
     var canNotNext: Bool {
-        num >= screens.count
+        num >= screens.count && id == nil
     }
 }
 

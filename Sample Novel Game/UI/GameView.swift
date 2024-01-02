@@ -15,8 +15,8 @@ struct GameView: View {
     @State private var isShowingToolbar = true
     @State private var isOpeningSettings = false
     
-    init(scenes: Array<NovelScene>, num: NovelID) {
-        self._novelColtoroler = State(initialValue: NovelSceneControler(scenes: scenes, id: num))
+    init(scenes: Array<NovelScene>, id: NovelID) {
+        self._novelColtoroler = State(initialValue: NovelSceneControler(scenes: scenes, id: id))
         self.isShowingToolbar = true
         self.isOpeningSettings = false
         novelColtoroler.endAction = {
@@ -28,8 +28,8 @@ struct GameView: View {
         NavigationStack {
                 Image(novelColtoroler.background)
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
                     .frame(maxHeight: .infinity)
+                    .aspectRatio(contentMode: .fit)
                     .overlay {
                         GeometryReader{ geometry in
                             VStack {
@@ -62,7 +62,6 @@ struct GameView: View {
                                         .padding(.horizontal)
                                 }
                             }
-                            .aspectRatio(contentMode: .fit)
                             .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .bottom)
                             
                             HStack {
@@ -356,9 +355,7 @@ struct GameView: View {
     }
 }
 
-//#Preview {
-//    let sceneList = [
-//        NovelScreen(primaryBGM: "bgm1")
-//    ]
-//    return GameView(scenes: sceneList, num: NovelNum())
-//}
+#Preview {
+    var previewScenes: Array<NovelScene> = Bundle.main.decodeJSON("game.json")
+    return GameView(scenes: previewScenes, id: NovelID())
+}
