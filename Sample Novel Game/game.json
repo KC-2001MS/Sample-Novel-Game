@@ -14,6 +14,7 @@
                 "voice": "",
                 "primaryBGM": "bgm1",
                 "secondaryBGM": "",
+                "additionalTime": 5,
             },
             {
                 "talker": "ch2",
@@ -23,6 +24,7 @@
                 "voice": "",
                 "primaryBGM": "bgm2",
                 "secondaryBGM": "",
+                "additionalTime": 5,
             },
             {
                 "talker": "ch1",
@@ -32,6 +34,7 @@
                 "voice": "",
                 "primaryBGM": "",
                 "secondaryBGM": "",
+                "additionalTime": 5,
             },
             {
                 "talker": "ch1",
@@ -41,6 +44,7 @@
                 "voice": "voice1",
                 "primaryBGM": "",
                 "secondaryBGM": "",
+                "additionalTime": 5,
             },
             {
                 "choices": [
@@ -82,6 +86,7 @@
                 "voice": "",
                 "primaryBGM": "bgm1",
                 "secondaryBGM": "",
+                "additionalTime": 5,
                 "nextID": {
                     "primary": 2,
                     "secondary": 1,
@@ -106,6 +111,7 @@
                 "voice": "",
                 "primaryBGM": "bgm1",
                 "secondaryBGM": "",
+                "additionalTime": 5,
                 "nextID": {
                     "primary": 2,
                     "secondary": 1,
@@ -129,6 +135,7 @@
                 "voice": "",
                 "primaryBGM": "bgm1",
                 "secondaryBGM": "",
+                "additionalTime": 5,
             },
             {
                 "talker": "ch2",
@@ -138,6 +145,7 @@
                 "voice": "",
                 "primaryBGM": "bgm2",
                 "secondaryBGM": "",
+                "additionalTime": 5,
             },
             {
                 "talker": "ch1",
@@ -147,6 +155,7 @@
                 "voice": "",
                 "primaryBGM": "",
                 "secondaryBGM": "",
+                "additionalTime": 5,
             },
             {
                 "talker": "ch1",
@@ -156,6 +165,7 @@
                 "voice": "voice1",
                 "primaryBGM": "",
                 "secondaryBGM": "",
+                "additionalTime": 5,
             },
         ]
     },

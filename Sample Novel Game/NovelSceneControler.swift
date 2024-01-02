@@ -46,12 +46,16 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
     @ObservationIgnored
     private var secondaryBGMPlayer: AVAudioPlayer? = nil
     
+    var time: Double = 0
+    
     var isPlaying = false
     
     var isAutoPlay = false
     
     @ObservationIgnored
     var endAction: () -> Void
+    
+    var autoplayTime: Double = 0.0
     
     init(scenes: Array<NovelScene>,screens: Array<NovelScreen>) {
         self.scenes = scenes
@@ -65,9 +69,11 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
         self.voicePlayer = nil
         self.primaryBGMPlayer = nil
         self.secondaryBGMPlayer = nil
+        self.time = Double(screens.first?.additionalTime ?? 100)
         self.isPlaying = false
         self.isAutoPlay = false
         self.endAction = {}
+        self.autoplayTime = 0.0
     }
     
     convenience init(scenes: Array<NovelScene>,id: NovelID) {
@@ -142,6 +148,7 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             self.background = scene.background ?? ""
             self.choices = scene.choices
             self.num += 1
+            self.time = Double(scene.additionalTime ?? 100)
             self.id = scene.nextID
         } else {
             if let nextID = id, choices == nil {
@@ -163,6 +170,7 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             self.background = scene.background ?? ""
             self.choices = scene.choices
             self.num = screens.count
+            self.time = Double(scene.additionalTime ?? 100)
             self.id = scene.nextID
         }
     }
@@ -176,8 +184,10 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             self.quote = scene.quote ?? ""
             self.background = scene.background ?? ""
             self.choices = scene.choices
+            self.num -= 1
+            self.time = Double(scene.additionalTime ?? 100)
+            self.id = scene.nextID
         }
-        self.num -= 1
     }
     
     func first() {
@@ -190,6 +200,8 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             self.background = scene.background ?? ""
             self.choices = scene.choices
             self.num = 1
+            self.time = Double(scene.additionalTime ?? 100)
+            self.id = scene.nextID
         }
     }
     
@@ -199,7 +211,6 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             screens = scene.screens
         }
     }
-    
     
     
     var canNotBack: Bool {
@@ -220,6 +231,7 @@ class NovelScreen: Codable {
     var voice: String?
     var primaryBGM: String?
     var secondaryBGM: String?
+    var additionalTime: Int?
     var nextID: NovelID?
     
     init(
@@ -231,6 +243,7 @@ class NovelScreen: Codable {
         voice: String? = nil,
         primaryBGM: String? = nil,
         secondaryBGM: String? = nil,
+        additionalTime: Int? = nil,
         nextNum: NovelID? = nil
     ) {
         self.talker = talker
@@ -241,6 +254,7 @@ class NovelScreen: Codable {
         self.voice = voice
         self.primaryBGM = primaryBGM
         self.secondaryBGM = secondaryBGM
+        self.additionalTime = additionalTime
         self.nextID = nextNum
     }
 }

@@ -9,17 +9,22 @@
 import SwiftUI
 
 struct TitleView: View {
+    @State private var isOpeningSettings = false
+    
     let scenes: Array<NovelScene>
     
     init() {
+        self.isOpeningSettings = false
         self.scenes = Bundle.main.decodeJSON("game.json")
     }
     
     var body: some View {
         NavigationStack {
             VStack {
-                Text("Novel Game Sample")
+                Text("Sample Novel Game")
                     .font(.largeTitle)
+                    .bold()
+                    .shadow(radius: 15)
                 
                 Spacer()
                 
@@ -28,22 +33,57 @@ struct TitleView: View {
                         .font(.title)
                         .frame(width: 200)
                         .padding()
+                        .foregroundStyle(Color.white)
                 }
                 .buttonStyle(.borderless)
                 .background {
                     RoundedRectangle(cornerRadius: 20)
                         .foregroundStyle(Material.ultraThin)
                 }
+                
+#if os(macOS)
+                SettingsLink {
+                    Text("Settings")
+                        .font(.title)
+                        .frame(width: 200)
+                        .padding()
+                        .foregroundStyle(Color.white)
+                }
+                .buttonStyle(.borderless)
+                .background {
+                    RoundedRectangle(cornerRadius: 20)
+                        .foregroundStyle(Material.ultraThin)
+                }
+#else
+                Button(action: {
+                    isOpeningSettings.toggle()
+                }) {
+                    Text("Settings")
+                        .font(.title)
+                        .frame(width: 200)
+                        .padding()
+                        .foregroundStyle(Color.white)
+                }
+                .buttonStyle(.borderless)
+                .background {
+                    RoundedRectangle(cornerRadius: 20)
+                        .foregroundStyle(Material.ultraThin)
+                }
+#endif
             }
-            .padding()
             .padding(.vertical, 100)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background {
+                Image("background")
+                    .resizable()
+                    .scaledToFill()
+            }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background {
-            Image("background")
-                .resizable()
-                .scaledToFill()
+#if !os(macOS)
+        .sheet(isPresented: $isOpeningSettings) {
+            SettingsView()
         }
+#endif
     }
 }
 

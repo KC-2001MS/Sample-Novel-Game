@@ -1,7 +1,7 @@
 //
 //  Novel_Game_SampleApp.swift
 //  Novel Game Sample
-//  
+//
 //  Created by Keisuke Chinone on 2023/12/06.
 //
 
@@ -17,15 +17,15 @@ struct NovelGameSampleApp: App {
         .commands {
             BasicCommands()
         }
-        #if os(macOS)
+#if os(macOS)
         .windowStyle(.hiddenTitleBar)
-        #endif
+#endif
         
-        #if os(macOS)
+#if os(macOS)
         Settings {
             SettingsView()
         }
         .windowStyle(.hiddenTitleBar)
-        #endif
+#endif
     }
 }
