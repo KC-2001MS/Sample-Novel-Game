@@ -112,6 +112,7 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
                 player?.delegate = self
                 player?.prepareToPlay()
                 player?.currentTime = 0.0
+                player?.volume = 1.0
                 player?.play()
             } catch {
                 print("音楽ファイルの再生に失敗しました")
@@ -145,10 +146,11 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             playSound(player: &voicePlayer, assetName: scene.voice ?? "")
             self.talker = scene.talker ?? ""
             self.quote = scene.quote ?? ""
+            self.characters = scene.characters
             self.background = scene.background ?? ""
             self.choices = scene.choices
             self.num += 1
-            self.time = Double(scene.additionalTime ?? 100)
+            self.time =  voicePlayer?.duration ?? 0 + Double(scene.additionalTime ?? 100)
             self.id = scene.nextID
         } else {
             if let nextID = id, choices == nil {
@@ -167,6 +169,7 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             playSound(player: &voicePlayer, assetName: scene.voice ?? "")
             self.talker = scene.talker ?? ""
             self.quote = scene.quote ?? ""
+            self.characters = scene.characters
             self.background = scene.background ?? ""
             self.choices = scene.choices
             self.num = screens.count
@@ -182,6 +185,7 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             playSound(player: &voicePlayer, assetName: scene.voice ?? "")
             self.talker = scene.talker ?? ""
             self.quote = scene.quote ?? ""
+            self.characters = scene.characters
             self.background = scene.background ?? ""
             self.choices = scene.choices
             self.num -= 1
@@ -197,6 +201,7 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             playSound(player: &voicePlayer, assetName: scene.voice ?? "")
             self.talker = scene.talker ?? ""
             self.quote = scene.quote ?? ""
+            self.characters = scene.characters
             self.background = scene.background ?? ""
             self.choices = scene.choices
             self.num = 1
@@ -237,7 +242,7 @@ class NovelScreen: Codable {
     init(
         talker: String? = nil,
         quote: String? = nil,
-        choices: Array<NovelChoice> = [],
+        choices: Array<NovelChoice>? = nil,
         characters: Array<String> = [],
         background: String? = nil,
         voice: String? = nil,

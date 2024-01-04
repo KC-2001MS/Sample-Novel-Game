@@ -25,6 +25,7 @@ struct TitleView: View {
                     .font(.largeTitle)
                     .bold()
                     .shadow(radius: 15)
+                    .foregroundStyle(Color.white)
                 
                 Spacer()
                 
@@ -79,6 +80,8 @@ struct TitleView: View {
                     .scaledToFill()
             }
         }
+//        .border(Color.red, width: 3)
+        .ignoresSafeArea()
 #if !os(macOS)
         .sheet(isPresented: $isOpeningSettings) {
             SettingsView()

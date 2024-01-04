@@ -10,9 +10,12 @@ import SwiftUI
 
 @main
 struct NovelGameSampleApp: App {
+    @State var settings = SettingsObject()
+    
     var body: some Scene {
         WindowGroup {
             TitleView()
+                .environment(settings)
         }
         .commands {
             BasicCommands()
@@ -24,6 +27,7 @@ struct NovelGameSampleApp: App {
 #if os(macOS)
         Settings {
             SettingsView()
+                .environment(settings)
         }
         .windowStyle(.hiddenTitleBar)
 #endif

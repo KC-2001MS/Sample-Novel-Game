@@ -9,7 +9,7 @@
             {
                 "talker": "ch1",
                 "quote": "this is test text",
-                "characters": ["ch1","ch2"],
+                "characters": ["ch1"],
                 "background": "background",
                 "voice": "",
                 "primaryBGM": "bgm1",
@@ -44,7 +44,7 @@
                 "voice": "voice1",
                 "primaryBGM": "",
                 "secondaryBGM": "",
-                "additionalTime": 5,
+                "additionalTime": 2,
             },
             {
                 "choices": [

@@ -9,11 +9,15 @@
 import SwiftUI
 
 struct GameView: View {
+    @Environment(SettingsObject.self) var settings
     @Environment(\.dismiss) private var dismiss
+    
     @State private var novelColtoroler: NovelSceneControler
     
     @State private var isShowingToolbar = true
     @State private var isOpeningSettings = false
+    
+    @State private var isAlert = false
     
     @State var timer: Timer?
     
@@ -34,6 +38,54 @@ struct GameView: View {
                 .aspectRatio(contentMode: .fit)
                 .overlay {
                     GeometryReader{ geometry in
+                        HStack {
+                            ForEach(novelColtoroler.characters, id: \.self) { character in
+                                Image(character)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: geometry.size.height)
+                                    .padding(.horizontal)
+                                    .padding(.top, geometry.size.height/3)
+                                    .animation(.easeOut(duration: 1.0), value: character)
+                            }
+                        }
+                        .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .bottom)
+                        
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(novelColtoroler.talker)
+                                    .font(.title2)
+                                    .bold()
+                                    .foregroundStyle(Color.white)
+                                    .shadow(radius: 7.5, x: 3, y: 3)
+                                Text(novelColtoroler.quote)
+//                                    .font(.title3)
+                                    .font(.custom("", size: CGFloat(settings.quoteFontSize), relativeTo: .body))
+                                    .foregroundStyle(Color.white)
+                                    .shadow(radius: 7.5, x: 3, y: 3)
+                                    .frame(maxWidth: .infinity,alignment: .leading)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal,geometry.size.width / 10)
+                            .padding(.vertical)
+                            
+                            if novelColtoroler.isAutoPlay && novelColtoroler.choices == nil {
+                                Gauge(value: novelColtoroler.autoplayTime, in: 0...novelColtoroler.time) {
+                                    Text(String(format: "%.1f", novelColtoroler.autoplayTime))
+                                }
+                                .gaugeStyle(.accessoryCircularCapacity)
+                                .scaleEffect(0.6)
+                                .padding()
+                            }
+                        }
+                        .frame(height: geometry.size.height / 4)
+                        .frame(maxHeight: .infinity,alignment: .bottom)
+                        .background {
+                            LinearGradient(gradient: Gradient(colors: [.accentColor, .clear]), startPoint: .bottom, endPoint: .top)
+                                .frame(height: geometry.size.height / 4)
+                                .frame(maxHeight: .infinity,alignment: .bottom)
+                        }
+                        
                         VStack {
                             if let choices = novelColtoroler.choices {
                                 ForEach(choices) { choice in
@@ -54,54 +106,10 @@ struct GameView: View {
                         }
                         .padding(100)
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                        
-                        HStack {
-                            ForEach(novelColtoroler.characters, id: \.self) { character in
-                                Image(character)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: geometry.size.height / 1.5)
-                                    .padding(.horizontal)
-                            }
-                        }
-                        .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .bottom)
-                        
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(novelColtoroler.talker)
-                                    .font(.title2)
-                                    .bold()
-                                    .foregroundStyle(Color.white)
-                                    .shadow(radius: 7.5, x: 3, y: 3)
-                                Text(novelColtoroler.quote)
-                                    .font(.title3)
-                                    .foregroundStyle(Color.white)
-                                    .shadow(radius: 7.5, x: 3, y: 3)
-                                    .frame(maxWidth: .infinity,alignment: .leading)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding(.horizontal,200)
-                            .padding(.vertical)
-                            
-                            if novelColtoroler.isAutoPlay {
-                                Gauge(value: novelColtoroler.autoplayTime, in: 0...novelColtoroler.time) {
-                                    Text("\(Int(novelColtoroler.autoplayTime))")
-                                }
-                                .gaugeStyle(.accessoryCircularCapacity)
-                                .scaleEffect(0.6)
-                                .padding()
-                            }
-                        }
-                        .frame(height: geometry.size.height / 4)
-                        .frame(maxHeight: .infinity,alignment: .bottom)
-                        .background {
-                            LinearGradient(gradient: Gradient(colors: [.accentColor, .clear]), startPoint: .bottom, endPoint: .top)
-                                .frame(height: geometry.size.height / 4)
-                                .frame(maxHeight: .infinity,alignment: .bottom)
-                        }
                     }
                     .frame(maxHeight: .infinity,alignment: .bottom)
                 }
+                .clipShape(Rectangle())
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background {
                     Image(novelColtoroler.background)
@@ -128,7 +136,7 @@ struct GameView: View {
                     if isShowingToolbar {
                         ToolbarItem(id: "title", placement: .topBarLeading) {
                             Button(action: {
-                                dismiss()
+                                isAlert.toggle()
                             }){
                                 Label("Back to Title", systemImage: "arrow.down.forward.and.arrow.up.backward")
                             }
@@ -152,7 +160,7 @@ struct GameView: View {
                     if isShowingToolbar {
                         ToolbarItem(id: "title", placement: .navigation) {
                             Button(action: {
-                                dismiss()
+                                isAlert.toggle()
                             }){
                                 Label("Back to Title", systemImage: "arrow.down.forward.and.arrow.up.backward")
                             }
@@ -407,10 +415,15 @@ struct GameView: View {
         .onDisappear {
             novelColtoroler.stopPlayAll()
         }
+        .alert("Shall we return to the title?", isPresented: $isAlert) {
+            Button("Go to the title", role: .destructive) {
+                dismiss()
+            }
+        }
     }
 }
 
 #Preview {
-    var previewScenes: Array<NovelScene> = Bundle.main.decodeJSON("game.json")
+    let previewScenes: Array<NovelScene> = Bundle.main.decodeJSON("game.json")
     return GameView(scenes: previewScenes, id: NovelID())
 }
