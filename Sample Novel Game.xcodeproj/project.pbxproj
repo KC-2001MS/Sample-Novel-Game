@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F70B2E4E2B4BEB3E002C8B2C /* KeyFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70B2E4D2B4BEB3E002C8B2C /* KeyFrame.swift */; };
 		F76E6A182B467C8A00B92BE3 /* SettingsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76E6A172B467C8A00B92BE3 /* SettingsObject.swift */; };
 		F78063D32B1FAF4B00D8C2FE /* NovelGameSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063D22B1FAF4B00D8C2FE /* NovelGameSampleApp.swift */; };
 		F78063D52B1FAF4B00D8C2FE /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063D42B1FAF4B00D8C2FE /* GameView.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F70B2E4D2B4BEB3E002C8B2C /* KeyFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFrame.swift; sourceTree = "<group>"; };
 		F76E6A172B467C8A00B92BE3 /* SettingsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsObject.swift; sourceTree = "<group>"; };
 		F78063CF2B1FAF4B00D8C2FE /* Sample Novel Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample Novel Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F78063D22B1FAF4B00D8C2FE /* NovelGameSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelGameSampleApp.swift; sourceTree = "<group>"; };
@@ -45,6 +47,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F70B2E4C2B4A5551002C8B2C /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
 		F76E6A162B467B2E00B92BE3 /* Process */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,9 +105,11 @@
 		F78063EB2B2232C000D8C2FE /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F70B2E4C2B4A5551002C8B2C /* Modifier */,
 				F78063D42B1FAF4B00D8C2FE /* GameView.swift */,
 				F78063E72B21B13F00D8C2FE /* TitleView.swift */,
 				F78063E12B202F7F00D8C2FE /* SettingsView.swift */,
+				F70B2E4D2B4BEB3E002C8B2C /* KeyFrame.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -179,6 +190,7 @@
 				F786FA5E2B41D4B4005C8C72 /* NovelSceneControler.swift in Sources */,
 				F78063D52B1FAF4B00D8C2FE /* GameView.swift in Sources */,
 				F78063D32B1FAF4B00D8C2FE /* NovelGameSampleApp.swift in Sources */,
+				F70B2E4E2B4BEB3E002C8B2C /* KeyFrame.swift in Sources */,
 				F78063E62B20861B00D8C2FE /* Commands.swift in Sources */,
 				F78063E82B21B13F00D8C2FE /* TitleView.swift in Sources */,
 			);

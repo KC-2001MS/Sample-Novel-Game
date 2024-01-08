@@ -84,6 +84,7 @@ struct SettingsView: View {
                         dismiss()
                     }) {
                         Text("Done")
+#if !os(visionOS)
                             .foregroundStyle(Color.white)
                             .padding(.horizontal, 7.5)
                             .padding(.vertical, 5)
@@ -91,10 +92,11 @@ struct SettingsView: View {
                                 Capsule()
                                     .foregroundStyle(Color.accentColor)
                             }
+#endif
                     }
                 }
             }
-            #else
+#else
             .toolbarBackground(Material.ultraThin,for: .windowToolbar)
 #endif
         }

@@ -11,6 +11,7 @@ import SwiftUI
 struct GameView: View {
     @Environment(SettingsObject.self) var settings
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.accessibilityReduceMotion) private var accessibilityReduceMotion
     
     @State private var novelColtoroler: NovelSceneControler
     
@@ -46,7 +47,18 @@ struct GameView: View {
                                     .frame(height: geometry.size.height)
                                     .padding(.horizontal)
                                     .padding(.top, geometry.size.height/3)
-                                    .animation(.easeOut(duration: 1.0), value: character)
+                            }
+                        }
+                        .keyframeAnimator(initialValue: KeyFrame(),trigger: novelColtoroler.characters) { content, value in
+                            if accessibilityReduceMotion {
+                                content
+                            } else {
+                                content
+                                    .opacity(value.opacity)
+                            }
+                        } keyframes: { frame in
+                            KeyframeTrack(\.opacity) {
+                                LinearKeyframe(1.0, duration: 0.5)
                             }
                         }
                         .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .bottom)
@@ -54,7 +66,8 @@ struct GameView: View {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text(novelColtoroler.talker)
-                                    .font(.title2)
+//                                    .font(.title2)
+                                    .font(.custom("", size: CGFloat(settings.talkerFontSize), relativeTo: .title2))
                                     .bold()
                                     .foregroundStyle(Color.white)
                                     .shadow(radius: 7.5, x: 3, y: 3)

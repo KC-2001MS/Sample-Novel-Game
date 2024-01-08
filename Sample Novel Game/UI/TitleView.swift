@@ -77,11 +77,12 @@ struct TitleView: View {
             .background {
                 Image("background")
                     .resizable()
+                    .ignoresSafeArea()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .scaledToFill()
             }
         }
-//        .border(Color.red, width: 3)
-        .ignoresSafeArea()
+        //        .ignoresSafeArea()
 #if !os(macOS)
         .sheet(isPresented: $isOpeningSettings) {
             SettingsView()
