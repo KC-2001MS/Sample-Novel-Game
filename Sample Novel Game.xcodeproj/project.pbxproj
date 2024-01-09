@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F70B2E4E2B4BEB3E002C8B2C /* KeyFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70B2E4D2B4BEB3E002C8B2C /* KeyFrame.swift */; };
+		F70B2E502B4BF8FC002C8B2C /* NovelGameTitleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70B2E4F2B4BF8FC002C8B2C /* NovelGameTitleButtonStyle.swift */; };
 		F76E6A182B467C8A00B92BE3 /* SettingsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76E6A172B467C8A00B92BE3 /* SettingsObject.swift */; };
 		F78063D32B1FAF4B00D8C2FE /* NovelGameSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063D22B1FAF4B00D8C2FE /* NovelGameSampleApp.swift */; };
 		F78063D52B1FAF4B00D8C2FE /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063D42B1FAF4B00D8C2FE /* GameView.swift */; };
@@ -18,10 +19,12 @@
 		F78063E82B21B13F00D8C2FE /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063E72B21B13F00D8C2FE /* TitleView.swift */; };
 		F786FA5D2B41D4AE005C8C72 /* game.json in Resources */ = {isa = PBXBuildFile; fileRef = F78063E92B2221D400D8C2FE /* game.json */; };
 		F786FA5E2B41D4B4005C8C72 /* NovelSceneControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063E32B20323600D8C2FE /* NovelSceneControler.swift */; };
+		F7AFCB2A2B4D3C4500514333 /* NovelGameChoiceButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AFCB292B4D3C4500514333 /* NovelGameChoiceButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F70B2E4D2B4BEB3E002C8B2C /* KeyFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFrame.swift; sourceTree = "<group>"; };
+		F70B2E4F2B4BF8FC002C8B2C /* NovelGameTitleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelGameTitleButtonStyle.swift; sourceTree = "<group>"; };
 		F76E6A172B467C8A00B92BE3 /* SettingsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsObject.swift; sourceTree = "<group>"; };
 		F78063CF2B1FAF4B00D8C2FE /* Sample Novel Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample Novel Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F78063D22B1FAF4B00D8C2FE /* NovelGameSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelGameSampleApp.swift; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		F78063E52B20861B00D8C2FE /* Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
 		F78063E72B21B13F00D8C2FE /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		F78063E92B2221D400D8C2FE /* game.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = game.json; sourceTree = "<group>"; };
+		F7AFCB292B4D3C4500514333 /* NovelGameChoiceButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelGameChoiceButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,8 @@
 		F70B2E4C2B4A5551002C8B2C /* Modifier */ = {
 			isa = PBXGroup;
 			children = (
+				F70B2E4F2B4BF8FC002C8B2C /* NovelGameTitleButtonStyle.swift */,
+				F7AFCB292B4D3C4500514333 /* NovelGameChoiceButtonStyle.swift */,
 			);
 			path = Modifier;
 			sourceTree = "<group>";
@@ -189,9 +195,11 @@
 				F78063E22B202F7F00D8C2FE /* SettingsView.swift in Sources */,
 				F786FA5E2B41D4B4005C8C72 /* NovelSceneControler.swift in Sources */,
 				F78063D52B1FAF4B00D8C2FE /* GameView.swift in Sources */,
+				F70B2E502B4BF8FC002C8B2C /* NovelGameTitleButtonStyle.swift in Sources */,
 				F78063D32B1FAF4B00D8C2FE /* NovelGameSampleApp.swift in Sources */,
 				F70B2E4E2B4BEB3E002C8B2C /* KeyFrame.swift in Sources */,
 				F78063E62B20861B00D8C2FE /* Commands.swift in Sources */,
+				F7AFCB2A2B4D3C4500514333 /* NovelGameChoiceButtonStyle.swift in Sources */,
 				F78063E82B21B13F00D8C2FE /* TitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

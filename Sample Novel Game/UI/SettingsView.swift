@@ -1,7 +1,7 @@
 //
 //  SettingsView.swift
 //  Novel Game Sample
-//  
+//
 //  Created by Keisuke Chinone on 2023/12/06.
 //
 

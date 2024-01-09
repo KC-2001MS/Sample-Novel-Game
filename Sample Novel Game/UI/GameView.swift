@@ -66,13 +66,11 @@ struct GameView: View {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text(novelColtoroler.talker)
-//                                    .font(.title2)
                                     .font(.custom("", size: CGFloat(settings.talkerFontSize), relativeTo: .title2))
                                     .bold()
                                     .foregroundStyle(Color.white)
                                     .shadow(radius: 7.5, x: 3, y: 3)
                                 Text(novelColtoroler.quote)
-//                                    .font(.title3)
                                     .font(.custom("", size: CGFloat(settings.quoteFontSize), relativeTo: .body))
                                     .foregroundStyle(Color.white)
                                     .shadow(radius: 7.5, x: 3, y: 3)
@@ -106,14 +104,8 @@ struct GameView: View {
                                         novelColtoroler.choice(choice: choice)
                                     } label: {
                                         Text(choice.word)
-                                            .frame(width: 200)
-                                            .padding()
                                     }
-                                    .buttonStyle(.borderless)
-                                    .background {
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .foregroundStyle(Material.ultraThin)
-                                    }
+                                    .buttonStyle(NovelGameChoiceButtonStyle())
                                 }
                             }
                         }
@@ -415,13 +407,15 @@ struct GameView: View {
                     novelColtoroler.autoplayTime = 0
                     self.timer = Timer.scheduledTimer(withTimeInterval:0.1, repeats: true){ _ in
                         novelColtoroler.autoplayTime += 0.1
+                        print("now time:\(novelColtoroler.autoplayTime)")
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(novelColtoroler.time)) {
-                        novelColtoroler.next()
-                        print("next")
-                        timer?.invalidate()
-                        timer = nil
-                    }
+                    _ = try await Task.sleep(for: .seconds(Double(novelColtoroler.time)))
+                    timer?.invalidate()
+                    novelColtoroler.next()
+                    timer = nil
+                    print("time: reset")
+                } else {
+                    print("state time:\(!novelColtoroler.canNotNext && novelColtoroler.isAutoPlay)")
                 }
             }
         }

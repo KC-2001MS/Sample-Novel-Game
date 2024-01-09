@@ -31,45 +31,21 @@ struct TitleView: View {
                 
                 NavigationLink(destination: GameView(scenes: scenes, id: NovelID())) {
                     Text("Start")
-                        .font(.title)
-                        .frame(width: 200)
-                        .padding()
-                        .foregroundStyle(Color.white)
                 }
-                .buttonStyle(.borderless)
-                .background {
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundStyle(Material.ultraThin)
-                }
+                .buttonStyle(NovelGameTitleButtonStyle())
                 
 #if os(macOS)
                 SettingsLink {
                     Text("Settings")
-                        .font(.title)
-                        .frame(width: 200)
-                        .padding()
-                        .foregroundStyle(Color.white)
                 }
-                .buttonStyle(.borderless)
-                .background {
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundStyle(Material.ultraThin)
-                }
+                .buttonStyle(NovelGameTitleButtonStyle())
 #else
                 Button(action: {
                     isOpeningSettings.toggle()
                 }) {
                     Text("Settings")
-                        .font(.title)
-                        .frame(width: 200)
-                        .padding()
-                        .foregroundStyle(Color.white)
                 }
-                .buttonStyle(.borderless)
-                .background {
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundStyle(Material.ultraThin)
-                }
+                .buttonStyle(NovelGameTitleButtonStyle())
 #endif
             }
             .padding(.vertical, 100)

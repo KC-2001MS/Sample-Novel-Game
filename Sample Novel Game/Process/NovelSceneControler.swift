@@ -60,16 +60,16 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
     init(scenes: Array<NovelScene>,screens: Array<NovelScreen>) {
         self.scenes = scenes
         self.screens = screens
-        self.num = 1
-        self.talker = screens.first?.talker ?? ""
-        self.quote = screens.first?.quote ?? ""
-        self.characters = screens.first?.characters ?? []
+        self.num = 0
+        self.talker = ""
+        self.quote = ""
+        self.characters = []
         self.choices = nil
-        self.background = screens.first?.background ?? ""
+        self.background = ""
         self.voicePlayer = nil
         self.primaryBGMPlayer = nil
         self.secondaryBGMPlayer = nil
-        self.time = Double(screens.first?.additionalTime ?? 100)
+        self.time = 0
         self.isPlaying = false
         self.isAutoPlay = false
         self.endAction = {}
@@ -117,6 +117,8 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             } catch {
                 print("音楽ファイルの再生に失敗しました")
             }
+        } else {
+           player = nil
         }
     }
     
@@ -132,11 +134,7 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
     }
     
     func startPlayAll() {
-        if let scene = screens.first {
-            playLoopingSound(player: &primaryBGMPlayer, assetName: scene.primaryBGM ?? "")
-            playLoopingSound(player: &secondaryBGMPlayer, assetName: scene.secondaryBGM ?? "")
-            playSound(player: &voicePlayer, assetName: scene.voice ?? "")
-        }
+        next()
     }
     
     func next() {
@@ -150,7 +148,8 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             self.background = scene.background ?? ""
             self.choices = scene.choices
             self.num += 1
-            self.time =  voicePlayer?.duration ?? 0 + Double(scene.additionalTime ?? 100)
+            self.time =  (voicePlayer?.duration ?? 0) + Double(scene.additionalTime ?? 100)
+            print("time:\(time)")
             self.id = scene.nextID
         } else {
             if let nextID = id, choices == nil {
@@ -159,7 +158,6 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
                 }
             }
         }
-        print(num)
     }
     
     func last() {
@@ -223,7 +221,7 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
     }
     
     var canNotNext: Bool {
-        num >= screens.count && id == nil
+        num >= screens.count && choices != nil
     }
 }
 
