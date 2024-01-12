@@ -97,6 +97,63 @@ struct GameView: View {
                                 .frame(maxHeight: .infinity,alignment: .bottom)
                         }
                         
+                        HStack {
+                            Text(novelColtoroler.id?.chapterAndSection ?? "")
+                                .font(.title3)
+                                .foregroundStyle(Color.white)
+                                .bold()
+                                .frame(width: 100, height: 20, alignment: .center)
+                                .padding(5)
+                                .background {
+                                    Capsule()
+                                        .foregroundStyle(Color.accentColor)
+                                }
+                                .padding(.horizontal,5)
+                                .keyframeAnimator(initialValue: KeyFrame(),trigger: novelColtoroler.id) { content, value in
+                                    if accessibilityReduceMotion {
+                                        content
+                                    } else {
+                                        content
+                                            .opacity(value.opacity)
+                                    }
+                                } keyframes: { frame in
+                                    KeyframeTrack(\.opacity) {
+                                        LinearKeyframe(1.0, duration: 0.5)
+                                        LinearKeyframe(1.0, duration: 1.5)
+                                        LinearKeyframe(0.0, duration: 0.5)
+                                    }
+                                }
+                            
+                            Spacer()
+                            
+                                Label(novelColtoroler.BGMName, systemImage: "music.note")
+                                    .font(.callout)
+                                    .foregroundStyle(Color.white)
+                                    .frame(height: 20,alignment: .center)
+                                    .padding(5)
+                                    .background {
+                                        Capsule()
+                                            .foregroundStyle(Material.ultraThin)
+                                    }
+                                    .padding(.horizontal,5)
+                                    .keyframeAnimator(initialValue: KeyFrame(),trigger: novelColtoroler.BGMName) { content, value in
+                                        if accessibilityReduceMotion {
+                                            content
+                                        } else {
+                                            content
+                                                .opacity(value.opacity)
+                                        }
+                                    } keyframes: { frame in
+                                        KeyframeTrack(\.opacity) {
+                                            LinearKeyframe(1.0, duration: 0.5)
+                                            LinearKeyframe(1.0, duration: 1.5)
+                                            LinearKeyframe(0.0, duration: 0.5)
+                                        }
+                                    }
+                        }
+                        .padding(.vertical, 35)
+                        .frame(maxHeight: .infinity,alignment: .top)
+                        
                         VStack {
                             if let choices = novelColtoroler.choices {
                                 ForEach(choices) { choice in
@@ -425,6 +482,7 @@ struct GameView: View {
         .alert("Shall we return to the title?", isPresented: $isAlert) {
             Button("Go to the title", role: .destructive) {
                 dismiss()
+                novelColtoroler.stopPlayAll()
             }
         }
     }

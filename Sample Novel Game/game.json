@@ -1,9 +1,9 @@
 [
     {
         "id": {
-            "primary": 1,
-            "secondary": 1,
-            "tertiary": 1,
+            "part": 1,
+            "chapter": 1,
+            "section": 1,
         },
         "screens": [
             {
@@ -12,8 +12,11 @@
                 "characters": ["ch1"],
                 "background": "background",
                 "voice": "",
-                "primaryBGM": "bgm1",
-                "secondaryBGM": "",
+                "BGM": {
+                    "name": "魔王魂 シャイニングスター",
+                    "assetName": "bgm1",
+                },
+                "soundEffect": "",
                 "additionalTime": 5,
             },
             {
@@ -22,8 +25,11 @@
                 "characters": ["ch1","ch2"],
                 "background": "background",
                 "voice": "",
-                "primaryBGM": "bgm2",
-                "secondaryBGM": "",
+                "BGM": {
+                    "name": "かえるのピアノ",
+                    "assetName": "bgm2",
+                },
+                "soundEffect": "",
                 "additionalTime": 5,
             },
             {
@@ -32,8 +38,7 @@
                 "characters": ["ch1","ch2"],
                 "background": "background",
                 "voice": "",
-                "primaryBGM": "",
-                "secondaryBGM": "",
+                "soundEffect": "",
                 "additionalTime": 5,
             },
             {
@@ -42,8 +47,7 @@
                 "characters": ["ch1","ch2"],
                 "background": "background",
                 "voice": "voice1",
-                "primaryBGM": "",
-                "secondaryBGM": "",
+                "soundEffect": "",
                 "additionalTime": 2,
             },
             {
@@ -60,21 +64,23 @@
                 "characters": ["ch1","ch2"],
                 "background": "background",
                 "voice": "",
-                "primaryBGM": "",
-                "secondaryBGM": "",
+                "BGM": {
+                    "assetName": "",
+                },
+                "soundEffect": "",
                 "nextID": {
-                    "primary": 1,
-                    "secondary": 1,
-                    "tertiary": 1,
+                    "part": 1,
+                    "chapter": 1,
+                    "section": 1,
                 },
             }
         ]
     },
     {
         "id": {
-            "primary": 1,
-            "secondary": 1,
-            "tertiary": 1,
+            "part": 1,
+            "chapter": 1,
+            "section": 1,
             "choice": 1,
         },
         "screens": [
@@ -84,22 +90,25 @@
                 "characters": ["ch1","ch2"],
                 "background": "background",
                 "voice": "",
-                "primaryBGM": "bgm1",
-                "secondaryBGM": "",
+                "BGM": {
+                    "name": "魔王魂 シャイニングスター",
+                    "assetName": "bgm1",
+                },
+                "soundEffect": "",
                 "additionalTime": 5,
                 "nextID": {
-                    "primary": 2,
-                    "secondary": 1,
-                    "tertiary": 1,
+                    "part": 1,
+                    "chapter": 1,
+                    "section": 2,
                 },
             }
         ]
     },
     {
         "id": {
-            "primary": 1,
-            "secondary": 1,
-            "tertiary": 1,
+            "part": 1,
+            "chapter": 1,
+            "section": 1,
             "choice": 2,
         },
         "screens": [
@@ -109,22 +118,25 @@
                 "characters": ["ch1","ch2"],
                 "background": "background",
                 "voice": "",
-                "primaryBGM": "bgm1",
-                "secondaryBGM": "",
+                "BGM": {
+                    "name": "魔王魂 シャイニングスター",
+                    "assetName": "bgm1",
+                },
+                "soundEffect": "",
                 "additionalTime": 5,
                 "nextID": {
-                    "primary": 2,
-                    "secondary": 1,
-                    "tertiary": 1,
+                    "part": 1,
+                    "chapter": 1,
+                    "section": 2,
                 },
             }
         ]
     },
     {
         "id": {
-            "primary": 2,
-            "secondary": 1,
-            "tertiary": 1,
+            "part": 1,
+            "chapter": 1,
+            "section": 2,
         },
         "screens": [
             {
@@ -133,8 +145,11 @@
                 "characters": ["ch.1","ch2"],
                 "background": "background",
                 "voice": "",
-                "primaryBGM": "bgm1",
-                "secondaryBGM": "",
+                "BGM": {
+                    "name": "魔王魂 シャイニングスター",
+                    "assetName": "bgm1",
+                },
+                "soundEffect": "",
                 "additionalTime": 5,
             },
             {
@@ -143,8 +158,11 @@
                 "characters": ["ch1","ch2"],
                 "background": "background",
                 "voice": "",
-                "primaryBGM": "bgm2",
-                "secondaryBGM": "",
+                "BGM": {
+                    "name": "かえるのピアノ",
+                    "assetName": "bgm2",
+                },
+                "soundEffect": "",
                 "additionalTime": 5,
             },
             {
@@ -153,8 +171,7 @@
                 "characters": ["ch1","ch2"],
                 "background": "background",
                 "voice": "",
-                "primaryBGM": "",
-                "secondaryBGM": "",
+                "soundEffect": "",
                 "additionalTime": 5,
             },
             {
@@ -163,8 +180,7 @@
                 "characters": ["ch1","ch2"],
                 "background": "background",
                 "voice": "voice1",
-                "primaryBGM": "",
-                "secondaryBGM": "",
+                "soundEffect": "",
                 "additionalTime": 5,
             },
         ]

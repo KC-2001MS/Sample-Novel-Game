@@ -22,44 +22,53 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
         }
     }
     
-    var id: NovelID? = nil
+    let initID: NovelID?
+    
+    var id: NovelID?
+    
+    var nextID: NovelID?
     
     @ObservationIgnored
-    var num: Int = 1
+    var num: Int
     
-    var talker = ""
+    var talker: String
     
-    var quote = ""
+    var quote: String
     
-    var characters: Array<String> = []
+    var characters: Array<String>
     
-    var choices: Array<NovelChoice>? = nil
+    var choices: Array<NovelChoice>?
     
-    var background = ""
-    
-    @ObservationIgnored
-    private var voicePlayer: AVAudioPlayer? = nil
+    var background: String
     
     @ObservationIgnored
-    private var primaryBGMPlayer: AVAudioPlayer? = nil
+    private var voicePlayer: AVAudioPlayer?
+    
+    var BGMName: String
     
     @ObservationIgnored
-    private var secondaryBGMPlayer: AVAudioPlayer? = nil
+    private var BGMPlayer: AVAudioPlayer?
     
-    var time: Double = 0
+    @ObservationIgnored
+    private var soundEffectPlayer: AVAudioPlayer?
     
-    var isPlaying = false
+    var time: Double
     
-    var isAutoPlay = false
+    var isPlaying: Bool
+    
+    var isAutoPlay: Bool
     
     @ObservationIgnored
     var endAction: () -> Void
     
-    var autoplayTime: Double = 0.0
+    var autoplayTime: Double
     
-    init(scenes: Array<NovelScene>,screens: Array<NovelScreen>) {
+    init(scenes: Array<NovelScene>, id: NovelID) {
         self.scenes = scenes
-        self.screens = screens
+        self.screens = []
+        self.initID = id
+        self.id = nil
+        self.nextID = nil
         self.num = 0
         self.talker = ""
         self.quote = ""
@@ -67,18 +76,14 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
         self.choices = nil
         self.background = ""
         self.voicePlayer = nil
-        self.primaryBGMPlayer = nil
-        self.secondaryBGMPlayer = nil
+        self.BGMName = ""
+        self.BGMPlayer = nil
+        self.soundEffectPlayer = nil
         self.time = 0
         self.isPlaying = false
         self.isAutoPlay = false
         self.endAction = {}
         self.autoplayTime = 0.0
-    }
-    
-    convenience init(scenes: Array<NovelScene>,id: NovelID) {
-        let scene = scenes.first(where: { $0.id == id && $0.id.choice == nil})
-        self.init(scenes: scenes,screens: scene?.screens ?? [])
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
@@ -90,35 +95,43 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
         }
     }
     
-    private func playLoopingSound( player: inout AVAudioPlayer?,assetName: String) {
-        if let dataAsset = NSDataAsset(name: assetName) {
-            do {
+    private func playLoopingSound( player: inout AVAudioPlayer?,assetName: String?) {
+        if let name = assetName {
+            if let dataAsset = NSDataAsset(name: name) {
+                do {
+                    player?.stop()
+                    player = try AVAudioPlayer(data: dataAsset.data)
+                    player?.numberOfLoops = -1
+                    player?.prepareToPlay()
+                    player?.play()
+                } catch {
+                    print("音楽ファイルの再生に失敗しました")
+                }
+            } else {
                 player?.stop()
-                player = try AVAudioPlayer(data: dataAsset.data)
-                player?.numberOfLoops = -1
-                player?.prepareToPlay()
-                player?.play()
-            } catch {
-                print("音楽ファイルの再生に失敗しました")
+                player = nil
             }
         }
     }
     
-    private func playSound( player: inout AVAudioPlayer?,assetName: String) {
-        if let dataAsset = NSDataAsset(name: assetName) {
-            do {
+    private func playSound( player: inout AVAudioPlayer?,assetName: String?) {
+        if let name = assetName {
+            if let dataAsset = NSDataAsset(name: name) {
+                do {
+                    player?.stop()
+                    player  = try AVAudioPlayer(data: dataAsset.data)
+                    player?.delegate = self
+                    player?.prepareToPlay()
+                    player?.currentTime = 0.0
+                    player?.volume = 1.0
+                    player?.play()
+                } catch {
+                    print("音楽ファイルの再生に失敗しました")
+                }
+            } else {
                 player?.stop()
-                player  = try AVAudioPlayer(data: dataAsset.data)
-                player?.delegate = self
-                player?.prepareToPlay()
-                player?.currentTime = 0.0
-                player?.volume = 1.0
-                player?.play()
-            } catch {
-                print("音楽ファイルの再生に失敗しました")
+               player = nil
             }
-        } else {
-           player = nil
         }
     }
     
@@ -129,89 +142,99 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
     
     func stopPlayAll() {
         voicePlayer?.stop()
-        primaryBGMPlayer?.stop()
-        secondaryBGMPlayer?.stop()
+        BGMPlayer?.stop()
+        soundEffectPlayer?.stop()
     }
     
     func startPlayAll() {
-        next()
+        if let scene = scenes.first(where: { $0.id == initID }) {
+            screens = scene.screens
+        }
+        id = initID
     }
     
     func next() {
         if let scene = screens[safe: num] {
-            playLoopingSound(player: &primaryBGMPlayer, assetName: scene.primaryBGM ?? "")
-            playLoopingSound(player: &secondaryBGMPlayer, assetName: scene.secondaryBGM ?? "")
-            playSound(player: &voicePlayer, assetName: scene.voice ?? "")
+            playLoopingSound(player: &BGMPlayer, assetName: scene.BGM?.assetName)
+            playLoopingSound(player: &soundEffectPlayer, assetName: scene.soundEffect)
+            playSound(player: &voicePlayer, assetName: scene.voice)
             self.talker = scene.talker ?? ""
             self.quote = scene.quote ?? ""
             self.characters = scene.characters
             self.background = scene.background ?? ""
+            self.BGMName = scene.BGM?.name ?? BGMName
             self.choices = scene.choices
             self.num += 1
             self.time =  (voicePlayer?.duration ?? 0) + Double(scene.additionalTime ?? 100)
-            print("time:\(time)")
-            self.id = scene.nextID
+            self.nextID = scene.nextID
         } else {
-            if let nextID = id, choices == nil {
-                if let scene = scenes.first(where: { $0.id == nextID && $0.id.choice == nil}) {
+            if nextID != nil && choices == nil {
+                id = nextID
+                if let scene = scenes.first(where: { $0.id == nextID && $0.id.isEmptyChoice()}) {
                     screens = scene.screens
                 }
+                nextID = nil
             }
         }
     }
     
     func last() {
         if let scene = screens.last {
-            playLoopingSound(player: &primaryBGMPlayer, assetName: scene.primaryBGM ?? "")
-            playLoopingSound(player: &secondaryBGMPlayer, assetName: scene.secondaryBGM ?? "")
-            playSound(player: &voicePlayer, assetName: scene.voice ?? "")
+            playLoopingSound(player: &BGMPlayer, assetName: scene.BGM?.assetName)
+            playLoopingSound(player: &soundEffectPlayer, assetName: scene.soundEffect)
+            playSound(player: &voicePlayer, assetName: scene.voice)
             self.talker = scene.talker ?? ""
             self.quote = scene.quote ?? ""
             self.characters = scene.characters
             self.background = scene.background ?? ""
+            self.BGMName = scene.BGM?.name ?? BGMName
             self.choices = scene.choices
             self.num = screens.count
             self.time = Double(scene.additionalTime ?? 100)
-            self.id = scene.nextID
+            self.nextID = scene.nextID
         }
     }
     
     func back() {
         if let scene = screens[safe: num - 2] {
-            playLoopingSound(player: &primaryBGMPlayer, assetName: scene.primaryBGM ?? "")
-            playLoopingSound(player: &secondaryBGMPlayer, assetName: scene.secondaryBGM ?? "")
-            playSound(player: &voicePlayer, assetName: scene.voice ?? "")
+            playLoopingSound(player: &BGMPlayer, assetName: scene.BGM?.assetName)
+            playLoopingSound(player: &soundEffectPlayer, assetName: scene.soundEffect)
+            playSound(player: &voicePlayer, assetName: scene.voice)
             self.talker = scene.talker ?? ""
             self.quote = scene.quote ?? ""
             self.characters = scene.characters
             self.background = scene.background ?? ""
+            self.BGMName = scene.BGM?.name ?? BGMName
             self.choices = scene.choices
             self.num -= 1
             self.time = Double(scene.additionalTime ?? 100)
-            self.id = scene.nextID
+            self.nextID = scene.nextID
         }
     }
     
     func first() {
         if let scene = screens.first {
-            playLoopingSound(player: &primaryBGMPlayer, assetName: scene.primaryBGM ?? "")
-            playLoopingSound(player: &secondaryBGMPlayer, assetName: scene.secondaryBGM ?? "")
-            playSound(player: &voicePlayer, assetName: scene.voice ?? "")
+            playLoopingSound(player: &BGMPlayer, assetName: scene.BGM?.assetName)
+            playLoopingSound(player: &soundEffectPlayer, assetName: scene.soundEffect)
+            playSound(player: &voicePlayer, assetName: scene.voice)
             self.talker = scene.talker ?? ""
             self.quote = scene.quote ?? ""
             self.characters = scene.characters
             self.background = scene.background ?? ""
+            self.BGMName = scene.BGM?.name ?? BGMName
             self.choices = scene.choices
             self.num = 1
             self.time = Double(scene.additionalTime ?? 100)
-            self.id = scene.nextID
+            self.nextID = scene.nextID
         }
     }
     
     func choice(choice: NovelChoice) {
-        if let scene = scenes.first(where: { $0.id == id && $0.id.choice == choice.num}) {
+        nextID?.choice = choice.num
+        if let scene = scenes.first(where: { $0.id == nextID}) {
             print(scene)
             screens = scene.screens
+            id = nextID
         }
     }
     
@@ -232,8 +255,8 @@ class NovelScreen: Codable {
     var characters: Array<String>
     var background: String?
     var voice: String?
-    var primaryBGM: String?
-    var secondaryBGM: String?
+    var BGM: NovelBGM?
+    var soundEffect: String?
     var additionalTime: Int?
     var nextID: NovelID?
     
@@ -244,8 +267,8 @@ class NovelScreen: Codable {
         characters: Array<String> = [],
         background: String? = nil,
         voice: String? = nil,
-        primaryBGM: String? = nil,
-        secondaryBGM: String? = nil,
+        BGM: NovelBGM? = nil,
+        soundEffect: String? = nil,
         additionalTime: Int? = nil,
         nextNum: NovelID? = nil
     ) {
@@ -255,8 +278,8 @@ class NovelScreen: Codable {
         self.characters = characters
         self.background = background
         self.voice = voice
-        self.primaryBGM = primaryBGM
-        self.secondaryBGM = secondaryBGM
+        self.BGM = BGM
+        self.soundEffect = soundEffect
         self.additionalTime = additionalTime
         self.nextID = nextNum
     }
@@ -267,6 +290,11 @@ class NovelScene: Codable {
     var screens: Array<NovelScreen> = []
 }
 
+class NovelBGM: Codable {
+    var name: String?
+    var assetName: String
+}
+
 class NovelChoice: Codable, Identifiable {
     var word: String
     var num: Int?
@@ -274,29 +302,33 @@ class NovelChoice: Codable, Identifiable {
 
 class NovelID: Codable, Equatable {
     static func == (lhs: NovelID, rhs: NovelID) -> Bool {
-        return lhs.primary == rhs.primary && lhs.secondary == rhs.secondary && lhs.tertiary == rhs.tertiary
+        return lhs.section == rhs.section && lhs.chapter == rhs.chapter && lhs.part == rhs.part && lhs.choice == rhs.choice
     }
     
-    var primary: Int
-    var secondary: Int
-    var tertiary: Int
+    func isEmptyChoice() -> Bool {
+        choice == nil
+    }
+    
+    var part: Int
+    var chapter: Int
+    var section: Int
     var choice: Int?
     var rute: Int?
     
-    init(primary: Int, secondary: Int, tertiary: Int, choice: Int? = nil, rute: Int? = nil) {
-        self.primary = primary
-        self.secondary = secondary
-        self.tertiary = tertiary
+    var chapterAndSection: String {
+        "\(chapter) - \(section)"
+    }
+    
+    init(part: Int, chapter: Int, section: Int, choice: Int? = nil, rute: Int? = nil) {
+        self.part = part
+        self.section = section
+        self.chapter = chapter
         self.choice = choice
         self.rute = rute
     }
     
-    init() {
-        self.primary = 1
-        self.secondary = 1
-        self.tertiary = 1
-        self.choice = nil
-        self.rute = nil
+    convenience init() {
+        self.init(part: 1, chapter: 1, section: 1)
     }
 }
 

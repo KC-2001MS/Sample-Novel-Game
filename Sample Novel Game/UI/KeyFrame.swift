@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct KeyFrame{
+struct KeyFrame {
     var opacity: CGFloat = 0
 }
