@@ -7,8 +7,12 @@
 
 
 import SwiftUI
+import SwiftData
 
 struct GameView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Query private var saveData: Array<SaveData>
+    
     @Environment(SettingsObject.self) var settings
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceMotion) private var accessibilityReduceMotion
@@ -17,6 +21,7 @@ struct GameView: View {
     
     @State private var isShowingToolbar = true
     @State private var isOpeningSettings = false
+    @State private var isOpeningLoading = false
     
     @State private var isAlert = false
     
@@ -247,9 +252,13 @@ struct GameView: View {
                         if UIDevice.current.userInterfaceIdiom == .pad {
                             ToolbarItem(id: "save", placement: .primaryAction) {
                                 Button(action: {
-                                    
+                                    if let novelID = novelColtoroler.id {
+                                        modelContext.insert(SaveData(screen: novelID))
+                                    }
+                                    try? modelContext.save()
                                 }) {
-                                    Label("Save", systemImage: "bookmark.fill")
+                                    Label("Save", systemImage: "bookmark")
+                                        .symbolVariant(saveData.filter{ return novelColtoroler.id == $0.screen && novelColtoroler.id?.number == $0.screen.number }.isEmpty ? .none : .fill)
                                 }
                                 .help("Save")
                                 .tint(Color.white.opacity(0.825))
@@ -257,7 +266,7 @@ struct GameView: View {
                             
                             ToolbarItem(id: "load", placement: .primaryAction) {
                                 Button(action: {
-                                    
+                                    isOpeningLoading.toggle()
                                 }) {
                                     Label("Load", systemImage: "arrowshape.down.fill")
                                 }
@@ -268,7 +277,10 @@ struct GameView: View {
 #else
                         ToolbarItem(id: "save", placement: .primaryAction) {
                             Button(action: {
-                                
+                                if let novelID = novelColtoroler.id {
+                                    modelContext.insert(SaveData(screen: novelID))
+                                }
+                                try? modelContext.save()
                             }) {
                                 Label("Save", systemImage: "bookmark.fill")
                             }
@@ -278,7 +290,7 @@ struct GameView: View {
                         
                         ToolbarItem(id: "load", placement: .primaryAction) {
                             Button(action: {
-                                
+                                isOpeningLoading.toggle()
                             }) {
                                 Label("Load", systemImage: "arrowshape.down.fill")
                             }
@@ -423,10 +435,13 @@ struct GameView: View {
                 }
 #if os(iOS)
                 .toolbar {
-                    if isShowingToolbar {
+                    if isShowingToolbar && UIDevice.current.userInterfaceIdiom == .phone {
                         ToolbarItemGroup(placement: .bottomBar) {
                             Button(action: {
-                                
+                                if let novelID = novelColtoroler.id {
+                                    modelContext.insert(SaveData(screen: novelID))
+                                }
+                                try? modelContext.save()
                             }) {
                                 Label("Save", systemImage: "bookmark.fill")
                             }
@@ -436,7 +451,7 @@ struct GameView: View {
                             Spacer()
                             
                             Button(action: {
-                                
+                                isOpeningLoading.toggle()
                             }) {
                                 Label("Load", systemImage: "arrowshape.down.fill")
                                     .foregroundStyle(Color("toolbarColor"))
@@ -452,12 +467,15 @@ struct GameView: View {
                     SettingsView()
                 }
 #endif
+                .sheet(isPresented: $isOpeningLoading) {
+                    LoadDataView()
+                }
         }
         .navigationBarBackButtonHidden()
         .onAppear {
             novelColtoroler.startPlayAll()
         }
-        .onChange(of: novelColtoroler.num, initial: true) {
+        .onChange(of: novelColtoroler.id?.number, initial: true) {
             Task {
                 if !novelColtoroler.canNotNext && novelColtoroler.isAutoPlay {
                     timer?.invalidate()
@@ -471,8 +489,6 @@ struct GameView: View {
                     novelColtoroler.next()
                     timer = nil
                     print("time: reset")
-                } else {
-                    print("state time:\(!novelColtoroler.canNotNext && novelColtoroler.isAutoPlay)")
                 }
             }
         }

@@ -20,6 +20,8 @@
 		F786FA5D2B41D4AE005C8C72 /* game.json in Resources */ = {isa = PBXBuildFile; fileRef = F78063E92B2221D400D8C2FE /* game.json */; };
 		F786FA5E2B41D4B4005C8C72 /* NovelSceneControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063E32B20323600D8C2FE /* NovelSceneControler.swift */; };
 		F7AFCB2A2B4D3C4500514333 /* NovelGameChoiceButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AFCB292B4D3C4500514333 /* NovelGameChoiceButtonStyle.swift */; };
+		F7E793682B528A4F008F0C9D /* SaveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E793672B528A4F008F0C9D /* SaveData.swift */; };
+		F7E7936A2B52A04A008F0C9D /* LoadDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E793692B52A04A008F0C9D /* LoadDataView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		F78063E72B21B13F00D8C2FE /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		F78063E92B2221D400D8C2FE /* game.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = game.json; sourceTree = "<group>"; };
 		F7AFCB292B4D3C4500514333 /* NovelGameChoiceButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelGameChoiceButtonStyle.swift; sourceTree = "<group>"; };
+		F7E793672B528A4F008F0C9D /* SaveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveData.swift; sourceTree = "<group>"; };
+		F7E793692B52A04A008F0C9D /* LoadDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDataView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,7 @@
 			children = (
 				F78063E32B20323600D8C2FE /* NovelSceneControler.swift */,
 				F76E6A172B467C8A00B92BE3 /* SettingsObject.swift */,
+				F7E793672B528A4F008F0C9D /* SaveData.swift */,
 			);
 			path = Process;
 			sourceTree = "<group>";
@@ -113,6 +118,7 @@
 			children = (
 				F70B2E4C2B4A5551002C8B2C /* Modifier */,
 				F78063D42B1FAF4B00D8C2FE /* GameView.swift */,
+				F7E793692B52A04A008F0C9D /* LoadDataView.swift */,
 				F78063E72B21B13F00D8C2FE /* TitleView.swift */,
 				F78063E12B202F7F00D8C2FE /* SettingsView.swift */,
 				F70B2E4D2B4BEB3E002C8B2C /* KeyFrame.swift */,
@@ -192,8 +198,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F76E6A182B467C8A00B92BE3 /* SettingsObject.swift in Sources */,
+				F7E7936A2B52A04A008F0C9D /* LoadDataView.swift in Sources */,
 				F78063E22B202F7F00D8C2FE /* SettingsView.swift in Sources */,
 				F786FA5E2B41D4B4005C8C72 /* NovelSceneControler.swift in Sources */,
+				F7E793682B528A4F008F0C9D /* SaveData.swift in Sources */,
 				F78063D52B1FAF4B00D8C2FE /* GameView.swift in Sources */,
 				F70B2E502B4BF8FC002C8B2C /* NovelGameTitleButtonStyle.swift in Sources */,
 				F78063D32B1FAF4B00D8C2FE /* NovelGameSampleApp.swift in Sources */,

@@ -7,15 +7,20 @@
 
 
 import SwiftUI
+import SwiftData
 
 struct TitleView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \SaveData.date) private var saveData: Array<SaveData>
+    
     @State private var isOpeningSettings = false
+    
     
     let scenes: Array<NovelScene>
     
     init() {
-        self.isOpeningSettings = false
         self.scenes = Bundle.main.decodeJSON("game.json")
+        self.isOpeningSettings = false
     }
     
     var body: some View {
@@ -34,6 +39,11 @@ struct TitleView: View {
                 }
                 .buttonStyle(NovelGameTitleButtonStyle())
                 
+                NavigationLink(destination: GameView(scenes: scenes, id: saveData.first?.screen ?? NovelID())) {
+                    Text("Continue")
+                }
+                .buttonStyle(NovelGameTitleButtonStyle())
+                .disabled(saveData.first?.screen == nil)
 #if os(macOS)
                 SettingsLink {
                     Text("Settings")
