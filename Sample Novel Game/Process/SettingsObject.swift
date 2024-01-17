@@ -40,12 +40,19 @@ class SettingsObject {
         }
     }
     
+    var waitingTime: Double {
+        didSet {
+            keyValueStore.set(waitingTime, forKey: "waitingTime")
+        }
+    }
+    
     func reset() {
         self.talkerFontSize = 15.0
         self.quoteFontSize = 15.0
         self.voiceVolume = 1.0
         self.primaryBGMVolume = 1.0
         self.secondaryBGMVolume = 1.0
+        self.waitingTime = 5
     }
     
     init() {
@@ -54,5 +61,6 @@ class SettingsObject {
         self.voiceVolume = keyValueStore.object(forKey: "voiceVolume") as? Float ?? 1.0
         self.primaryBGMVolume = keyValueStore.object(forKey: "primaryBGMVolume") as? Float ?? 1.0
         self.secondaryBGMVolume = keyValueStore.object(forKey: "secondaryBGMVolume") as? Float ?? 1.0
+        self.waitingTime = keyValueStore.object(forKey: "waitingTime") as? Double ?? 5
     }
 }

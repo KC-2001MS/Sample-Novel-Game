@@ -19,7 +19,7 @@ struct NovelGameChoiceButtonStyle: ButtonStyle {
                     .foregroundStyle(Material.ultraThin)
             }
     }
- }
+}
 
 #Preview {
     Button(action: {

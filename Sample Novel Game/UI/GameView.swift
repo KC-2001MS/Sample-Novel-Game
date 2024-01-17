@@ -131,30 +131,30 @@ struct GameView: View {
                             
                             Spacer()
                             
-                                Label(novelColtoroler.BGMName, systemImage: "music.note")
-                                    .font(.callout)
-                                    .foregroundStyle(Color.white)
-                                    .frame(height: 20,alignment: .center)
-                                    .padding(5)
-                                    .background {
-                                        Capsule()
-                                            .foregroundStyle(Material.ultraThin)
+                            Label(novelColtoroler.BGMName, systemImage: "music.note")
+                                .font(.callout)
+                                .foregroundStyle(Color.white)
+                                .frame(height: 20,alignment: .center)
+                                .padding(5)
+                                .background {
+                                    Capsule()
+                                        .foregroundStyle(Material.ultraThin)
+                                }
+                                .padding(.horizontal,5)
+                                .keyframeAnimator(initialValue: KeyFrame(),trigger: novelColtoroler.BGMName) { content, value in
+                                    if accessibilityReduceMotion {
+                                        content
+                                    } else {
+                                        content
+                                            .opacity(value.opacity)
                                     }
-                                    .padding(.horizontal,5)
-                                    .keyframeAnimator(initialValue: KeyFrame(),trigger: novelColtoroler.BGMName) { content, value in
-                                        if accessibilityReduceMotion {
-                                            content
-                                        } else {
-                                            content
-                                                .opacity(value.opacity)
-                                        }
-                                    } keyframes: { frame in
-                                        KeyframeTrack(\.opacity) {
-                                            LinearKeyframe(1.0, duration: 0.5)
-                                            LinearKeyframe(1.0, duration: 1.5)
-                                            LinearKeyframe(0.0, duration: 0.5)
-                                        }
+                                } keyframes: { frame in
+                                    KeyframeTrack(\.opacity) {
+                                        LinearKeyframe(1.0, duration: 0.5)
+                                        LinearKeyframe(1.0, duration: 1.5)
+                                        LinearKeyframe(0.0, duration: 0.5)
                                     }
+                                }
                         }
                         .padding(.vertical, 35)
                         .frame(maxHeight: .infinity,alignment: .top)
@@ -468,12 +468,12 @@ struct GameView: View {
                 }
 #endif
                 .sheet(isPresented: $isOpeningLoading) {
-                    LoadDataView()
+                    LoadDataView(novelColtoroler: novelColtoroler)
                 }
         }
         .navigationBarBackButtonHidden()
         .onAppear {
-            novelColtoroler.startPlayAll()
+            novelColtoroler.startPlayAll(waitingTime: settings.waitingTime)
         }
         .onChange(of: novelColtoroler.id?.number, initial: true) {
             Task {
@@ -493,6 +493,10 @@ struct GameView: View {
             }
         }
         .onDisappear {
+            if let novelID = novelColtoroler.id {
+                modelContext.insert(SaveData(screen: novelID))
+            }
+            try? modelContext.save()
             novelColtoroler.stopPlayAll()
         }
         .alert("Shall we return to the title?", isPresented: $isAlert) {
@@ -501,6 +505,19 @@ struct GameView: View {
                 novelColtoroler.stopPlayAll()
             }
         }
+        .focusedSceneValue(\.saveAction) {
+            if let novelID = novelColtoroler.id {
+                modelContext.insert(SaveData(screen: novelID))
+            }
+            try? modelContext.save()
+        }
+        .focusedSceneValue(\.loadAction) {
+            isOpeningLoading.toggle()
+        }
+        .focusedSceneValue(\.goTitleAction) {
+            isAlert.toggle()
+        }
+        .preferredColorScheme(.dark)
     }
 }
 

@@ -11,7 +11,7 @@ import SwiftData
 
 struct TitleView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: \SaveData.date) private var saveData: Array<SaveData>
+    @Query(sort: \SaveData.date, order: .reverse) private var saveData: Array<SaveData>
     
     @State private var isOpeningSettings = false
     
@@ -43,7 +43,15 @@ struct TitleView: View {
                     Text("Continue")
                 }
                 .buttonStyle(NovelGameTitleButtonStyle())
-                .disabled(saveData.first?.screen == nil)
+                .disabled(saveData.isEmpty)
+                
+                Button {
+                    
+                } label: {
+                    Text("Loading")
+                }
+                .buttonStyle(NovelGameTitleButtonStyle())
+                .disabled(saveData.isEmpty)
 #if os(macOS)
                 SettingsLink {
                     Text("Settings")
@@ -68,12 +76,12 @@ struct TitleView: View {
                     .scaledToFill()
             }
         }
-        //        .ignoresSafeArea()
 #if !os(macOS)
         .sheet(isPresented: $isOpeningSettings) {
             SettingsView()
         }
 #endif
+        .preferredColorScheme(.dark)
     }
 }
 

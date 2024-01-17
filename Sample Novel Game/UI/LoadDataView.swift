@@ -14,12 +14,15 @@ struct LoadDataView: View {
     @Query private var saveData: Array<SaveData>
     
     @Environment(\.dismiss) private var dismiss
-
+    
+    @Bindable var novelColtoroler: NovelSceneControler
+    
+    
     var body: some View {
         NavigationStack {
             Group {
                 if saveData.isEmpty {
-                    ContentUnavailableView("No Save Data", image: "opticaldiscdrive")
+                    ContentUnavailableView("No Save Data", systemImage: "opticaldiscdrive")
                 } else {
                     GeometryReader { geom in
                         ScrollView(.horizontal) {
@@ -28,28 +31,11 @@ struct LoadDataView: View {
                                 alignment: .center,
                                 spacing: 0
                             ) {
-                                ForEach(saveData, id: \.self) { item in
-                                    VStack {
-                                        Text(item.date, format: Date.FormatStyle(date: .numeric, time: .omitted))
-                                        Text("\(item.screen.chapter) - \(item.screen.section)")
-                                        
-                                        HStack {
-                                            Spacer()
-                                            
-                                            Button {
-                                                modelContext.delete(item)
-                                            } label: {
-                                                Image(systemName: "trash")
-                                            }
-                                            .buttonStyle(.borderless)
-                                        }
-                                    }
-                                    .frame(width: (geom.size.width / 2) - 10, height: (geom.size.height / 3) - 10)
-                                    .frame(maxHeight: .infinity)
-                                    .background {
-                                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                            .fill(Color.red)
-                                    }
+                                ForEach(saveData, id: \.self) { saveData in
+                                    SaveDataCard(saveData: saveData,novelColtoroler: novelColtoroler,dismissAction: {
+                                        dismiss()
+                                    })
+                                        .frame(width: (geom.size.width / 2) - 10, height: (geom.size.height / 3) - 10)
                                 }
                                 .padding(.horizontal,5)
                             }
@@ -71,12 +57,14 @@ struct LoadDataView: View {
                 }
             }
         }
-        #if !os(iOS)
+#if !os(iOS)
         .frame(width: 600, height: 600)
-        #endif
+#endif
+        .preferredColorScheme(.dark)
     }
 }
 
 #Preview {
-    LoadDataView()
+    @State var novelColtoroler = NovelSceneControler(scenes: Bundle.main.decodeJSON("game.json"), id: NovelID())
+    return LoadDataView(novelColtoroler: novelColtoroler)
 }

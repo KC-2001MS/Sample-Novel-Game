@@ -1,7 +1,7 @@
 //
 //  NovelControler.swift
 //  Novel Game Sample
-//  
+//
 //  Created by Keisuke Chinone on 2023/12/06.
 //
 
@@ -18,14 +18,23 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
     
     var screens: Array<NovelScreen> {
         didSet {
-            id?.number = 0
             next()
         }
     }
     
     let initID: NovelID?
     
-    var id: NovelID?
+    var id: NovelID? {
+        didSet {
+            if let num = id?.number, num > 0 {
+                id?.number! -= 1
+                print("-1")
+            } else {
+                id?.number = 0
+                print("0")
+            }
+        }
+    }
     
     var nextID: NovelID?
     
@@ -61,6 +70,8 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
     
     var autoplayTime: Double
     
+    var waitingTime: Double
+    
     init(scenes: Array<NovelScene>, id: NovelID) {
         self.scenes = scenes
         self.screens = []
@@ -81,6 +92,7 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
         self.isAutoPlay = false
         self.endAction = {}
         self.autoplayTime = 0.0
+        self.waitingTime = 0
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
@@ -127,7 +139,7 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
                 }
             } else {
                 player?.stop()
-               player = nil
+                player = nil
             }
         }
     }
@@ -143,9 +155,9 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
         soundEffectPlayer?.stop()
     }
     
-    func startPlayAll() {
+    func startPlayAll(waitingTime: Double) {
+        self.waitingTime = waitingTime
         id = initID
-        id?.number = 0
         if let scene = scenes.first(where: { $0.id == initID }) {
             screens = scene.screens
         }
@@ -163,7 +175,7 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             self.BGMName = scene.BGM?.name ?? BGMName
             self.choices = scene.choices
             self.id?.number = 1 + (id?.number ?? 0)
-            self.time =  (voicePlayer?.duration ?? 0) + Double(scene.additionalTime ?? 100)
+            self.time =  (voicePlayer?.duration ?? 0) + waitingTime
             self.nextID = scene.nextID
         } else {
             if nextID != nil && choices == nil {
@@ -231,9 +243,14 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
     func choice(choice: NovelChoice) {
         nextID?.choice = choice.num
         if let scene = scenes.first(where: { $0.id == nextID}) {
-            print(scene)
             id = nextID
-            id?.number = 0
+            screens = scene.screens
+        }
+    }
+    
+    func change(id: NovelID) {
+        if let scene = scenes.first(where: { $0.id == id}) {
+            self.id = id
             screens = scene.screens
         }
     }
@@ -354,16 +371,16 @@ class NovelID: Codable, Equatable {
         choice = try? container.decode(Int.self, forKey: .choice)
         rute = try? container.decode(Int.self, forKey: .rute)
     }
-
-        func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            try container.encode(part, forKey: .part)
-            try container.encode(section, forKey: .section)
-            try container.encode(chapter, forKey: .chapter)
-            try container.encode(number, forKey: .number)
-            try container.encode(choice, forKey: .choice)
-            try container.encode(rute, forKey: .rute)
-        }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(part, forKey: .part)
+        try container.encode(section, forKey: .section)
+        try container.encode(chapter, forKey: .chapter)
+        try container.encode(number, forKey: .number)
+        try container.encode(choice, forKey: .choice)
+        try container.encode(rute, forKey: .rute)
+    }
 }
 
 extension Array {

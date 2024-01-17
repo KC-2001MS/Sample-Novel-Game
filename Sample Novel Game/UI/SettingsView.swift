@@ -65,6 +65,10 @@ struct SettingsView: View {
                     } header: {
                         Text("Volume")
                     }
+                    
+                    Section {
+                        Stepper("Waiting Time: \(settings.waitingTime)", value: $settings.waitingTime, in: 1...10, step: 1)
+                    }
                 }
 #if !os(visionOS)
                 .listRowBackground(Color.clear)
@@ -104,6 +108,7 @@ struct SettingsView: View {
 #if os(macOS)
         .frame(minWidth: 300, minHeight: 400)
 #endif
+        .preferredColorScheme(.dark)
     }
 }
 

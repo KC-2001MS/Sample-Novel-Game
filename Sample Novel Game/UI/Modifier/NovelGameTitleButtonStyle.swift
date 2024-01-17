@@ -9,18 +9,18 @@
 import SwiftUI
 
 struct NovelGameTitleButtonStyle: ButtonStyle {
-   public func makeBody(configuration: Self.Configuration) -> some View {
-       configuration.label
-           .font(.title)
-           .frame(width: 200)
-           .padding()
-           .foregroundStyle(Color.white)
-           .buttonStyle(.borderless)
-           .background {
-               RoundedRectangle(cornerRadius: 20)
-                   .foregroundStyle(Material.ultraThin)
-           }
-   }
+    public func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .font(.title)
+            .frame(width: 200)
+            .padding()
+            .foregroundStyle(Color.white)
+            .buttonStyle(.borderless)
+            .background {
+                RoundedRectangle(cornerRadius: 20)
+                    .foregroundStyle(Material.ultraThin)
+            }
+    }
 }
 
 #Preview {

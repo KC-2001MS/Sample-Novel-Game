@@ -14,14 +14,14 @@ struct NovelGameSampleApp: App {
     @State var settings = SettingsObject()
     
     let modelContainer: ModelContainer
-        
-        init() {
-            do {
-                modelContainer = try ModelContainer(for: SaveData.self)
-            } catch {
-                fatalError("Could not initialize ModelContainer")
-            }
+    
+    init() {
+        do {
+            modelContainer = try ModelContainer(for: SaveData.self)
+        } catch {
+            fatalError("Could not initialize ModelContainer")
         }
+    }
     
     var body: some Scene {
         WindowGroup {
