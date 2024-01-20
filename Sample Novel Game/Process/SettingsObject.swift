@@ -46,6 +46,18 @@ class SettingsObject {
         }
     }
     
+    var isDisplayingDialogWhenGoingBack: Bool {
+        didSet {
+            keyValueStore.set(isDisplayingDialogWhenGoingBack, forKey: "isDisplayingDialogWhenGoingBack")
+        }
+    }
+    
+    var isDisplayingDialogWhenLoading: Bool {
+        didSet {
+            keyValueStore.set(isDisplayingDialogWhenLoading, forKey: "isDisplayingDialogWhenLoading")
+        }
+    }
+    
     func reset() {
         self.talkerFontSize = 15.0
         self.quoteFontSize = 15.0
@@ -53,6 +65,8 @@ class SettingsObject {
         self.primaryBGMVolume = 1.0
         self.secondaryBGMVolume = 1.0
         self.waitingTime = 5
+        self.isDisplayingDialogWhenGoingBack = false
+        self.isDisplayingDialogWhenLoading = false
     }
     
     init() {
@@ -62,5 +76,7 @@ class SettingsObject {
         self.primaryBGMVolume = keyValueStore.object(forKey: "primaryBGMVolume") as? Float ?? 1.0
         self.secondaryBGMVolume = keyValueStore.object(forKey: "secondaryBGMVolume") as? Float ?? 1.0
         self.waitingTime = keyValueStore.object(forKey: "waitingTime") as? Double ?? 5
+        self.isDisplayingDialogWhenGoingBack = false
+        self.isDisplayingDialogWhenLoading = false
     }
 }

@@ -10,10 +10,12 @@ import SwiftUI
 import SwiftData
 
 struct TitleView: View {
+    @Environment(SettingsObject.self) var settings
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \SaveData.date, order: .reverse) private var saveData: Array<SaveData>
     
     @State private var isOpeningSettings = false
+    @State private var isOpenHelp = false
     
     
     let scenes: Array<NovelScene>
@@ -24,6 +26,7 @@ struct TitleView: View {
     }
     
     var body: some View {
+        @Bindable var settings = settings
         NavigationStack {
             VStack {
                 Text("Sample Novel Game")
@@ -80,8 +83,15 @@ struct TitleView: View {
         .sheet(isPresented: $isOpeningSettings) {
             SettingsView()
         }
+        .sheet(isPresented: $isOpenHelp) {
+            HelpView()
+        }
 #endif
         .preferredColorScheme(.dark)
+        .focusedSceneValue(\.waitingTime, $settings.waitingTime)
+        .focusedValue(\.helpAction) {
+            isOpenHelp.toggle()
+        }
     }
 }
 

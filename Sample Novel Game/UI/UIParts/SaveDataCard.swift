@@ -11,6 +11,7 @@ import SwiftData
 
 struct SaveDataCard: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(SettingsObject.self) var settings
     
     @State private var isShowingDialog = false
     @State private var isSuppressed = false
@@ -21,6 +22,7 @@ struct SaveDataCard: View {
     let dismissAction: () -> ()
     
     var body: some View {
+        @Bindable var settings = settings
         VStack {
             HStack {
                 Text(saveData.date, format: Date.FormatStyle(date: .numeric, time: .omitted))
@@ -47,10 +49,10 @@ struct SaveDataCard: View {
                 }
                 .buttonStyle(.borderless)
                 .confirmationDialog(
-                    "Are you sure you want to erase these items?",
+                    "Do you want to load data?",
                     isPresented: $isShowingDialog
                 ) {
-                    Button("Erase", role: .destructive) {
+                    Button("Load") {
                         novelColtoroler.change(id: saveData.screen)
                         dismissAction()
                     }
@@ -59,8 +61,8 @@ struct SaveDataCard: View {
                     }
                 }
                 .dialogSuppressionToggle(
-                    "Do not ask about erasing items again",
-                    isSuppressed: $isSuppressed
+                    "Don't ask again",
+                    isSuppressed: $settings.isDisplayingDialogWhenLoading
                 )
                 
                 

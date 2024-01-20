@@ -142,7 +142,7 @@
             {
                 "talker": "ch1",
                 "quote": "this is test text",
-                "characters": ["ch.1","ch2"],
+                "characters": ["ch1","ch2"],
                 "background": "background",
                 "voice": "",
                 "BGM": {

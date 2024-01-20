@@ -24,6 +24,7 @@ struct GameView: View {
     @State private var isOpeningLoading = false
     
     @State private var isAlert = false
+    @State private var isSuppressed = false
     
     @State var timer: Timer?
     
@@ -37,6 +38,7 @@ struct GameView: View {
     }
     
     var body: some View {
+        @Bindable var settings = settings
         NavigationStack {
             Image(novelColtoroler.background)
                 .resizable()
@@ -253,7 +255,11 @@ struct GameView: View {
                             ToolbarItem(id: "save", placement: .primaryAction) {
                                 Button(action: {
                                     if let novelID = novelColtoroler.id {
-                                        modelContext.insert(SaveData(screen: novelID))
+                                        if let deleteData = saveData.filter{ return novelColtoroler.id == $0.screen && novelColtoroler.id?.number == $0.screen.number }.first {
+                                            modelContext.delete(deleteData)
+                                        } else {
+                                            modelContext.insert(SaveData(screen: novelID))
+                                        }
                                     }
                                     try? modelContext.save()
                                 }) {
@@ -278,11 +284,16 @@ struct GameView: View {
                         ToolbarItem(id: "save", placement: .primaryAction) {
                             Button(action: {
                                 if let novelID = novelColtoroler.id {
-                                    modelContext.insert(SaveData(screen: novelID))
+                                    if let deleteData = saveData.filter{ return novelColtoroler.id == $0.screen && novelColtoroler.id?.number == $0.screen.number }.first {
+                                        modelContext.delete(deleteData)
+                                    } else {
+                                        modelContext.insert(SaveData(screen: novelID))
+                                    }
                                 }
                                 try? modelContext.save()
                             }) {
-                                Label("Save", systemImage: "bookmark.fill")
+                                Label("Save", systemImage: "bookmark")
+                                    .symbolVariant(saveData.filter{ return novelColtoroler.id == $0.screen && novelColtoroler.id?.number == $0.screen.number }.isEmpty ? .none : .fill)
                             }
                             .help("Save")
                             .tint(Color.white.opacity(0.825))
@@ -322,13 +333,13 @@ struct GameView: View {
                             .disabled(novelColtoroler.canNotBack)
                         }
                         
-                        ToolbarItem(id: "play_pause", placement: .primaryAction) {
+                        ToolbarItem(id: "autoPlay_pause", placement: .primaryAction) {
                             Button(action: {
                                 novelColtoroler.autoPlay()
                             }) {
-                                Label(novelColtoroler.isAutoPlay ? "Pause" : "Play", systemImage: novelColtoroler.isAutoPlay ? "pause.fill" : "play.fill")
+                                Label(novelColtoroler.isAutoPlay ? "Pause" : "Auto Play", systemImage: novelColtoroler.isAutoPlay ? "pause.fill" : "play.fill")
                             }
-                            .help(novelColtoroler.isAutoPlay ? "Pause" : "Play")
+                            .help(novelColtoroler.isAutoPlay ? "Pause" : "Auto Play")
                             .tint(Color.white.opacity(0.825))
                             .disabled(novelColtoroler.canNotNext)
                         }
@@ -439,11 +450,16 @@ struct GameView: View {
                         ToolbarItemGroup(placement: .bottomBar) {
                             Button(action: {
                                 if let novelID = novelColtoroler.id {
-                                    modelContext.insert(SaveData(screen: novelID))
+                                    if let deleteData = saveData.filter{ return novelColtoroler.id == $0.screen && novelColtoroler.id?.number == $0.screen.number }.first {
+                                        modelContext.delete(deleteData)
+                                    } else {
+                                        modelContext.insert(SaveData(screen: novelID))
+                                    }
                                 }
                                 try? modelContext.save()
                             }) {
-                                Label("Save", systemImage: "bookmark.fill")
+                                Label("Save", systemImage: "bookmark")
+                                    .symbolVariant(saveData.filter{ return novelColtoroler.id == $0.screen && novelColtoroler.id?.number == $0.screen.number }.isEmpty ? .none : .fill)
                             }
                             .help("Save")
                             .tint(Color.white.opacity(0.825))
@@ -499,12 +515,22 @@ struct GameView: View {
             try? modelContext.save()
             novelColtoroler.stopPlayAll()
         }
-        .alert("Shall we return to the title?", isPresented: $isAlert) {
-            Button("Go to the title", role: .destructive) {
+        .confirmationDialog(
+            "Shall we return to the title?",
+            isPresented: $isAlert
+        ) {
+            Button("Go to the title") {
                 dismiss()
                 novelColtoroler.stopPlayAll()
             }
+            Button("Cancel", role: .cancel) {
+                isAlert = false
+            }
         }
+        .dialogSuppressionToggle(
+            "Don't ask again",
+            isSuppressed: $settings.isDisplayingDialogWhenGoingBack
+        )
         .focusedSceneValue(\.saveAction) {
             if let novelID = novelColtoroler.id {
                 modelContext.insert(SaveData(screen: novelID))
@@ -517,6 +543,12 @@ struct GameView: View {
         .focusedSceneValue(\.goTitleAction) {
             isAlert.toggle()
         }
+#if os(macOS)
+        .focusedSceneValue(\.backwardAction, novelColtoroler.canNotBack ? nil : { novelColtoroler.back() })
+#endif
+        .focusedSceneValue(\.autoPlayAction, novelColtoroler.canNotNext ? nil : { novelColtoroler.autoPlay() })
+        .focusedSceneValue(\.forwardAction, novelColtoroler.canNotNext ? nil : { novelColtoroler.next() })
+        .focusedSceneValue(\.waitingTime, $settings.waitingTime)
         .preferredColorScheme(.dark)
     }
 }

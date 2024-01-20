@@ -37,6 +37,10 @@ struct NovelGameSampleApp: App {
 #endif
         
 #if os(macOS)
+        Window("Sample Novel Game", id: "help") {
+            HelpView()
+        }
+        
         Settings {
             SettingsView()
                 .environment(settings)

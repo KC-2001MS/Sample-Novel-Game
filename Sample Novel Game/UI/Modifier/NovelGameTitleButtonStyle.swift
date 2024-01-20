@@ -14,11 +14,11 @@ struct NovelGameTitleButtonStyle: ButtonStyle {
             .font(.title)
             .frame(width: 200)
             .padding()
-            .foregroundStyle(Color.white)
+            .foregroundStyle(configuration.isPressed ? Color.gray : Color.white)
             .buttonStyle(.borderless)
             .background {
                 RoundedRectangle(cornerRadius: 20)
-                    .foregroundStyle(Material.ultraThin)
+                    .foregroundStyle(configuration.isPressed ? Material.thin : Material.ultraThin)
             }
     }
 }

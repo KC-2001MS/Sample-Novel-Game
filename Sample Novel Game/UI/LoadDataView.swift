@@ -17,6 +17,11 @@ struct LoadDataView: View {
     
     @Bindable var novelColtoroler: NovelSceneControler
     
+#if os(macOS)
+    let gridRows: Array<GridItem> = Array(repeating: GridItem(.adaptive(minimum: .infinity, maximum: .infinity)), count: 3)
+#else
+    let gridRows: Array<GridItem> = Array(repeating: GridItem(.adaptive(minimum: .infinity, maximum: .infinity)), count: 2)
+#endif
     
     var body: some View {
         NavigationStack {
@@ -27,7 +32,7 @@ struct LoadDataView: View {
                     GeometryReader { geom in
                         ScrollView(.horizontal) {
                             LazyHGrid(
-                                rows: Array(repeating: GridItem(.adaptive(minimum: .infinity, maximum: .infinity)), count: 3),
+                                rows: gridRows,
                                 alignment: .center,
                                 spacing: 0
                             ) {
@@ -35,7 +40,7 @@ struct LoadDataView: View {
                                     SaveDataCard(saveData: saveData,novelColtoroler: novelColtoroler,dismissAction: {
                                         dismiss()
                                     })
-                                        .frame(width: (geom.size.width / 2) - 10, height: (geom.size.height / 3) - 10)
+                                    .frame(width: (geom.size.width / 2) - 10, height: (geom.size.height / Double(gridRows.count)) - 10)
                                 }
                                 .padding(.horizontal,5)
                             }

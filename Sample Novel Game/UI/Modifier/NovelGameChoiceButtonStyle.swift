@@ -11,12 +11,13 @@ import SwiftUI
 struct NovelGameChoiceButtonStyle: ButtonStyle {
     public func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .frame(width: 200)
+            .frame(width: 400)
             .padding()
+            .foregroundStyle(configuration.isPressed ? Color.gray : Color.white)
             .buttonStyle(.borderless)
             .background {
                 RoundedRectangle(cornerRadius: 20)
-                    .foregroundStyle(Material.ultraThin)
+                    .foregroundStyle(configuration.isPressed ? Material.thin : Material.ultraThin)
             }
     }
 }

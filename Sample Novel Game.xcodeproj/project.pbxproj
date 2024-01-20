@@ -11,6 +11,9 @@
 		F70B2E502B4BF8FC002C8B2C /* NovelGameTitleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70B2E4F2B4BF8FC002C8B2C /* NovelGameTitleButtonStyle.swift */; };
 		F72EE36F2B57BC8900A5725A /* SaveDataCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72EE36E2B57BC8900A5725A /* SaveDataCard.swift */; };
 		F72EE3712B583D7700A5725A /* FocusedValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72EE3702B583D7700A5725A /* FocusedValues.swift */; };
+		F72EE3932B5AF0EA00A5725A /* DialogSettingsParts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72EE3922B5AF0EA00A5725A /* DialogSettingsParts.swift */; };
+		F72EE3952B5AF1A100A5725A /* GeneralSettingsParts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72EE3942B5AF1A100A5725A /* GeneralSettingsParts.swift */; };
+		F72EE3972B5B745A00A5725A /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72EE3962B5B745A00A5725A /* HelpView.swift */; };
 		F76E6A182B467C8A00B92BE3 /* SettingsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76E6A172B467C8A00B92BE3 /* SettingsObject.swift */; };
 		F78063D32B1FAF4B00D8C2FE /* NovelGameSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063D22B1FAF4B00D8C2FE /* NovelGameSampleApp.swift */; };
 		F78063D52B1FAF4B00D8C2FE /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063D42B1FAF4B00D8C2FE /* GameView.swift */; };
@@ -31,6 +34,9 @@
 		F70B2E4F2B4BF8FC002C8B2C /* NovelGameTitleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelGameTitleButtonStyle.swift; sourceTree = "<group>"; };
 		F72EE36E2B57BC8900A5725A /* SaveDataCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDataCard.swift; sourceTree = "<group>"; };
 		F72EE3702B583D7700A5725A /* FocusedValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedValues.swift; sourceTree = "<group>"; };
+		F72EE3922B5AF0EA00A5725A /* DialogSettingsParts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogSettingsParts.swift; sourceTree = "<group>"; };
+		F72EE3942B5AF1A100A5725A /* GeneralSettingsParts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsParts.swift; sourceTree = "<group>"; };
+		F72EE3962B5B745A00A5725A /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		F76E6A172B467C8A00B92BE3 /* SettingsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsObject.swift; sourceTree = "<group>"; };
 		F78063CF2B1FAF4B00D8C2FE /* Sample Novel Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample Novel Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F78063D22B1FAF4B00D8C2FE /* NovelGameSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelGameSampleApp.swift; sourceTree = "<group>"; };
@@ -80,6 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				F72EE36E2B57BC8900A5725A /* SaveDataCard.swift */,
+				F72EE3922B5AF0EA00A5725A /* DialogSettingsParts.swift */,
+				F72EE3942B5AF1A100A5725A /* GeneralSettingsParts.swift */,
 			);
 			path = UIParts;
 			sourceTree = "<group>";
@@ -144,6 +152,7 @@
 				F7E793692B52A04A008F0C9D /* LoadDataView.swift */,
 				F78063E72B21B13F00D8C2FE /* TitleView.swift */,
 				F78063E12B202F7F00D8C2FE /* SettingsView.swift */,
+				F72EE3962B5B745A00A5725A /* HelpView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -219,11 +228,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F72EE3932B5AF0EA00A5725A /* DialogSettingsParts.swift in Sources */,
 				F76E6A182B467C8A00B92BE3 /* SettingsObject.swift in Sources */,
 				F7E7936A2B52A04A008F0C9D /* LoadDataView.swift in Sources */,
 				F78063E22B202F7F00D8C2FE /* SettingsView.swift in Sources */,
 				F786FA5E2B41D4B4005C8C72 /* NovelSceneControler.swift in Sources */,
 				F7E793682B528A4F008F0C9D /* SaveData.swift in Sources */,
+				F72EE3972B5B745A00A5725A /* HelpView.swift in Sources */,
 				F78063D52B1FAF4B00D8C2FE /* GameView.swift in Sources */,
 				F70B2E502B4BF8FC002C8B2C /* NovelGameTitleButtonStyle.swift in Sources */,
 				F78063D32B1FAF4B00D8C2FE /* NovelGameSampleApp.swift in Sources */,
@@ -232,6 +243,7 @@
 				F72EE36F2B57BC8900A5725A /* SaveDataCard.swift in Sources */,
 				F7AFCB2A2B4D3C4500514333 /* NovelGameChoiceButtonStyle.swift in Sources */,
 				F78063E82B21B13F00D8C2FE /* TitleView.swift in Sources */,
+				F72EE3952B5AF1A100A5725A /* GeneralSettingsParts.swift in Sources */,
 				F72EE3712B583D7700A5725A /* FocusedValues.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
