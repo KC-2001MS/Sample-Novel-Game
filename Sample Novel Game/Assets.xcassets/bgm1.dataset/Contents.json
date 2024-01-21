@@ -1,8 +1,9 @@
 {
   "data" : [
     {
-      "filename" : "魔王魂 シャイニングスター.mp3",
-      "idiom" : "universal"
+      "filename" : "tanoshiibouken.mp3",
+      "idiom" : "universal",
+      "universal-type-identifier" : "public.mp3"
     }
   ],
   "info" : {

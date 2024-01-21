@@ -17,7 +17,7 @@ struct LoadDataView: View {
     
     @Bindable var novelColtoroler: NovelSceneControler
     
-#if os(macOS)
+#if os(macOS) || os(visionOS)
     let gridRows: Array<GridItem> = Array(repeating: GridItem(.adaptive(minimum: .infinity, maximum: .infinity)), count: 3)
 #else
     let gridRows: Array<GridItem> = Array(repeating: GridItem(.adaptive(minimum: .infinity, maximum: .infinity)), count: 2)

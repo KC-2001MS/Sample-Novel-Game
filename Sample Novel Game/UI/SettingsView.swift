@@ -35,8 +35,8 @@ struct SettingsView: View {
                 .tag(Tabs.dialog)
                 .accessibilityInputLabels(["Dialog", "Rectangle"])
         }
-#if os(macOS)
-        .frame(minWidth: 300, minHeight: 400)
+#if os(macOS) || os(visionOS)
+        .frame(minWidth: 500, minHeight: 700)
 #endif
         
         .preferredColorScheme(.dark)
