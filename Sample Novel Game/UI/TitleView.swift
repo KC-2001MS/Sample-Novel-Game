@@ -47,14 +47,7 @@ struct TitleView: View {
                 }
                 .buttonStyle(NovelGameTitleButtonStyle())
                 .disabled(saveData.isEmpty)
-                
-                Button {
-                    
-                } label: {
-                    Text("Loading")
-                }
-                .buttonStyle(NovelGameTitleButtonStyle())
-                .disabled(saveData.isEmpty)
+
 #if os(macOS)
                 SettingsLink {
                     Text("Settings")

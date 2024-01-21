@@ -483,9 +483,6 @@ struct GameView: View {
                     SettingsView()
                 }
 #endif
-                .sheet(isPresented: $isOpeningLoading) {
-                    LoadDataView(novelColtoroler: novelColtoroler)
-                }
         }
         .navigationBarBackButtonHidden()
         .onAppear {

@@ -21,7 +21,6 @@ struct SaveDataCard: View {
     
     let dismissAction: () -> ()
     
-    
     var body: some View {
         @Bindable var settings = settings
         VStack {
