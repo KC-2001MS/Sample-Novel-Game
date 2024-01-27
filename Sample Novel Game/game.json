@@ -7,21 +7,8 @@
         },
         "screens": [
             {
-                "talker": "ch1",
-                "quote": "this is test text",
-                "characters": ["ch1"],
-                "background": "background",
-                "voice": "",
-                "BGM": {
-                    "name": "Fun Adventures",
-                    "assetName": "bgm1",
-                },
-                "soundEffect": "",
-                "additionalTime": 5,
-            },
-            {
-                "talker": "ch2",
-                "quote": "Is text Changed?",
+                "talker": "Kurisu",
+                "quote": "Hi, my name is Kurisu.",
                 "characters": ["ch1","ch2"],
                 "background": "background",
                 "voice": "",
@@ -33,8 +20,17 @@
                 "additionalTime": 5,
             },
             {
-                "talker": "ch1",
-                "quote": "Changed Again",
+                "talker": "Sachi",
+                "quote": "I am Sachi.",
+                "characters": ["ch1"],
+                "background": "background",
+                "voice": "",
+                "soundEffect": "",
+                "additionalTime": 5,
+            },
+            {
+                "talker": "Sachi and Kurisu",
+                "quote": "We, both of us, will see how this sample application works.",
                 "characters": ["ch1","ch2"],
                 "background": "background",
                 "voice": "",
@@ -42,8 +38,8 @@
                 "additionalTime": 5,
             },
             {
-                "talker": "ch1",
-                "quote": "Last",
+                "talker": "Sachi",
+                "quote": "Do you see our lines?",
                 "characters": ["ch1","ch2"],
                 "background": "background",
                 "voice": "voice1",
@@ -53,20 +49,16 @@
             {
                 "choices": [
                     {
-                        "word": "test1",
+                        "word": "I can see it clearly.",
                         "num": 1
                     },
                     {
-                        "word": "test2",
+                        "word": "I don't see \"Do you see our lines?\"",
                         "num": 2
                     }
                 ],
                 "characters": ["ch1","ch2"],
                 "background": "background",
-                "voice": "",
-                "BGM": {
-                    "assetName": "",
-                },
                 "soundEffect": "",
                 "nextID": {
                     "part": 1,
@@ -85,8 +77,8 @@
         },
         "screens": [
             {
-                "talker": "ch1",
-                "quote": "Choice 1",
+                "talker": "Sachi",
+                "quote": "Good. It seems to be working well.",
                 "characters": ["ch1","ch2"],
                 "background": "background",
                 "voice": "",
@@ -113,8 +105,8 @@
         },
         "screens": [
             {
-                "talker": "ch1",
-                "quote": "Choice 2",
+                "talker": "Kurisu",
+                "quote": "How do you know the lines I said? If you say such a tempestuous line, they will know you are lying.",
                 "characters": ["ch1","ch2"],
                 "background": "background",
                 "voice": "",
@@ -140,49 +132,53 @@
         },
         "screens": [
             {
-                "talker": "ch1",
-                "quote": "this is test text",
+                "talker": "Sachi",
+                "quote": "To implement the story, simply change the json file.",
                 "characters": ["ch1","ch2"],
                 "background": "background",
-                "voice": "",
-                "BGM": {
-                    "name": "Fun Adventures",
-                    "assetName": "bgm1",
-                },
                 "soundEffect": "",
                 "additionalTime": 5,
             },
             {
-                "talker": "ch2",
-                "quote": "Is text Changed?",
+                "talker": "Kurisu",
+                "quote": "Leave the implementation of branching to the json file.",
                 "characters": ["ch1","ch2"],
                 "background": "background",
-                "voice": "",
-                "BGM": {
-                    "name": "Frog Piano",
-                    "assetName": "bgm2",
-                },
                 "soundEffect": "",
                 "additionalTime": 5,
             },
             {
-                "talker": "ch1",
-                "quote": "Changed Again",
+                "talker": "Kurisu",
+                "quote": "Why don't you all try to create a novel game or app onboarding with this kind of implementation?",
                 "characters": ["ch1","ch2"],
                 "background": "background",
-                "voice": "",
                 "soundEffect": "",
                 "additionalTime": 5,
             },
             {
-                "talker": "ch1",
-                "quote": "Last",
+                "talker": "Sachi",
+                "quote": "I plan to use this application as a library in the future. However, there are many features that have not yet been implemented.",
                 "characters": ["ch1","ch2"],
                 "background": "background",
-                "voice": "voice1",
                 "soundEffect": "",
                 "additionalTime": 5,
             },
+            {
+                "talker": "Sachi",
+                "quote": "If you have suggestions for better implementations or new features, please join this project. The adopted features will be implemented in the library.",
+                "characters": ["ch1","ch2"],
+                "background": "background",
+                "soundEffect": "",
+                "additionalTime": 5,
+            },
+            {
+                "talker": "Kurisu",
+                "quote": "If you have suggestions for better implementations or new features, please join this project. The adopted features will be implemented in the library.",
+                "characters": ["ch1","ch2"],
+                "background": "background",
+                "soundEffect": "",
+                "additionalTime": 5,
+            }
         ]
     },
 ]

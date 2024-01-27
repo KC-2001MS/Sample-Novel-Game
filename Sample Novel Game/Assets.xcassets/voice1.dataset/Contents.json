@@ -1,8 +1,9 @@
 {
   "data" : [
     {
-      "filename" : "test_jp.wav",
-      "idiom" : "universal"
+      "filename" : "Do you see our lines?.wav",
+      "idiom" : "universal",
+      "universal-type-identifier" : "com.microsoft.waveform-audio"
     }
   ],
   "info" : {

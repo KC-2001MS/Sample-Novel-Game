@@ -284,7 +284,7 @@ struct GameView: View {
                         ToolbarItem(id: "save", placement: .primaryAction) {
                             Button(action: {
                                 if let novelID = novelColtoroler.id {
-                                    if let deleteData = saveData.filter{ return novelColtoroler.id == $0.screen && novelColtoroler.id?.number == $0.screen.number }.first {
+                                    if let deleteData = saveData.filter({ return novelColtoroler.id == $0.screen && novelColtoroler.id?.number == $0.screen.number }).first {
                                         modelContext.delete(deleteData)
                                     } else {
                                         modelContext.insert(SaveData(screen: novelID))
@@ -483,6 +483,9 @@ struct GameView: View {
                     SettingsView()
                 }
 #endif
+                .sheet(isPresented: $isOpeningLoading) {
+                   LoadDataView(novelColtoroler: novelColtoroler)
+                }
         }
         .navigationBarBackButtonHidden()
         .onAppear {
@@ -506,10 +509,10 @@ struct GameView: View {
             }
         }
         .onDisappear {
-            if let novelID = novelColtoroler.id {
+            if let novelID = novelColtoroler.id, saveData.filter({return $0.screen == novelID}).isEmpty {
                 modelContext.insert(SaveData(screen: novelID))
+                try? modelContext.save()
             }
-            try? modelContext.save()
             novelColtoroler.stopPlayAll()
         }
         .confirmationDialog(
