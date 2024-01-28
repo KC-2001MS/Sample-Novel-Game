@@ -170,14 +170,6 @@
                 "background": "background",
                 "soundEffect": "",
                 "additionalTime": 5,
-            },
-            {
-                "talker": "Kurisu",
-                "quote": "If you have suggestions for better implementations or new features, please join this project. The adopted features will be implemented in the library.",
-                "characters": ["ch1","ch2"],
-                "background": "background",
-                "soundEffect": "",
-                "additionalTime": 5,
             }
         ]
     },
