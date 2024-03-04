@@ -17,11 +17,9 @@ struct TitleView: View {
     @State private var isOpeningSettings = false
     @State private var isOpenHelp = false
     
-    
-    let scenes: Array<NovelScene>
-    
+    @State private var assetsManager = AssetsManager()
+
     init() {
-        self.scenes = Bundle.main.decodeJSON("game.json")
         self.isOpeningSettings = false
     }
     
@@ -37,16 +35,17 @@ struct TitleView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: GameView(scenes: scenes, id: NovelID())) {
+                NavigationLink(destination: GameView(scenes: assetsManager.scenes, id: NovelID())) {
                     Text("Start")
                 }
                 .buttonStyle(NovelGameTitleButtonStyle())
+                .disabled(assetsManager.scenes.isEmpty)
                 
-                NavigationLink(destination: GameView(scenes: scenes, id: saveData.first?.screen ?? NovelID())) {
+                NavigationLink(destination: GameView(scenes: assetsManager.scenes, id: saveData.first?.screen ?? NovelID())) {
                     Text("Continue")
                 }
                 .buttonStyle(NovelGameTitleButtonStyle())
-                .disabled(saveData.isEmpty)
+                .disabled(saveData.isEmpty || assetsManager.scenes.isEmpty)
 
 #if os(macOS)
                 SettingsLink {

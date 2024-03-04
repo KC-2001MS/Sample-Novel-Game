@@ -9,12 +9,19 @@
 /* Begin PBXBuildFile section */
 		F70B2E4E2B4BEB3E002C8B2C /* KeyFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70B2E4D2B4BEB3E002C8B2C /* KeyFrame.swift */; };
 		F70B2E502B4BF8FC002C8B2C /* NovelGameTitleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70B2E4F2B4BF8FC002C8B2C /* NovelGameTitleButtonStyle.swift */; };
+		F71C5E8D2B87AB8A008CB62B /* BackgroundDownloadHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71C5E8C2B87AB8A008CB62B /* BackgroundDownloadHandler.swift */; };
+		F71C5E922B87AB8A008CB62B /* Asset Download Extension.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F71C5E8A2B87AB8A008CB62B /* Asset Download Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F72EE36F2B57BC8900A5725A /* SaveDataCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72EE36E2B57BC8900A5725A /* SaveDataCard.swift */; };
 		F72EE3712B583D7700A5725A /* FocusedValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72EE3702B583D7700A5725A /* FocusedValues.swift */; };
 		F72EE3932B5AF0EA00A5725A /* DialogSettingsParts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72EE3922B5AF0EA00A5725A /* DialogSettingsParts.swift */; };
 		F72EE3952B5AF1A100A5725A /* GeneralSettingsParts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72EE3942B5AF1A100A5725A /* GeneralSettingsParts.swift */; };
 		F72EE3972B5B745A00A5725A /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72EE3962B5B745A00A5725A /* HelpView.swift */; };
+		F76016DE2B87C0F500B5BAEE /* AssetsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76016DD2B87C0F500B5BAEE /* AssetsManager.swift */; };
 		F76E6A182B467C8A00B92BE3 /* SettingsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76E6A172B467C8A00B92BE3 /* SettingsObject.swift */; };
+		F76FABF72B961E7600534C11 /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76FABF62B961E7600534C11 /* URL+.swift */; };
+		F76FABF92B961E9200534C11 /* Logger+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76FABF82B961E9200534C11 /* Logger+.swift */; };
+		F76FABFB2B961EE500534C11 /* Logger+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76FABFA2B961EE500534C11 /* Logger+.swift */; };
+		F76FABFE2B9621A700534C11 /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76FABF62B961E7600534C11 /* URL+.swift */; };
 		F78063D32B1FAF4B00D8C2FE /* NovelGameSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063D22B1FAF4B00D8C2FE /* NovelGameSampleApp.swift */; };
 		F78063D52B1FAF4B00D8C2FE /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063D42B1FAF4B00D8C2FE /* GameView.swift */; };
 		F78063D72B1FAF4C00D8C2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F78063D62B1FAF4C00D8C2FE /* Assets.xcassets */; };
@@ -22,23 +29,55 @@
 		F78063E22B202F7F00D8C2FE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063E12B202F7F00D8C2FE /* SettingsView.swift */; };
 		F78063E62B20861B00D8C2FE /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063E52B20861B00D8C2FE /* Commands.swift */; };
 		F78063E82B21B13F00D8C2FE /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063E72B21B13F00D8C2FE /* TitleView.swift */; };
-		F786FA5D2B41D4AE005C8C72 /* game.json in Resources */ = {isa = PBXBuildFile; fileRef = F78063E92B2221D400D8C2FE /* game.json */; };
 		F786FA5E2B41D4B4005C8C72 /* NovelSceneControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063E32B20323600D8C2FE /* NovelSceneControler.swift */; };
 		F7AFCB2A2B4D3C4500514333 /* NovelGameChoiceButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AFCB292B4D3C4500514333 /* NovelGameChoiceButtonStyle.swift */; };
 		F7E793682B528A4F008F0C9D /* SaveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E793672B528A4F008F0C9D /* SaveData.swift */; };
 		F7E7936A2B52A04A008F0C9D /* LoadDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E793692B52A04A008F0C9D /* LoadDataView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F71C5E902B87AB8A008CB62B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F78063C72B1FAF4B00D8C2FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F71C5E892B87AB8A008CB62B;
+			remoteInfo = "Asset Download Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F71C5E822B87AB58008CB62B /* Embed ExtensionKit Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+				F71C5E922B87AB8A008CB62B /* Asset Download Extension.appex in Embed ExtensionKit Extensions */,
+			);
+			name = "Embed ExtensionKit Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		F70B2E4D2B4BEB3E002C8B2C /* KeyFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFrame.swift; sourceTree = "<group>"; };
 		F70B2E4F2B4BF8FC002C8B2C /* NovelGameTitleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelGameTitleButtonStyle.swift; sourceTree = "<group>"; };
+		F71C5E8A2B87AB8A008CB62B /* Asset Download Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = "Asset Download Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F71C5E8C2B87AB8A008CB62B /* BackgroundDownloadHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundDownloadHandler.swift; sourceTree = "<group>"; };
+		F71C5E8E2B87AB8A008CB62B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F71C5E8F2B87AB8A008CB62B /* Asset_Download_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Asset_Download_Extension.entitlements; sourceTree = "<group>"; };
 		F72EE36E2B57BC8900A5725A /* SaveDataCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDataCard.swift; sourceTree = "<group>"; };
 		F72EE3702B583D7700A5725A /* FocusedValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedValues.swift; sourceTree = "<group>"; };
 		F72EE3922B5AF0EA00A5725A /* DialogSettingsParts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogSettingsParts.swift; sourceTree = "<group>"; };
 		F72EE3942B5AF1A100A5725A /* GeneralSettingsParts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsParts.swift; sourceTree = "<group>"; };
 		F72EE3962B5B745A00A5725A /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		F752DB552B5BEC0B00A95AFC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F76016DC2B87C00500B5BAEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		F76016DD2B87C0F500B5BAEE /* AssetsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsManager.swift; sourceTree = "<group>"; };
 		F76E6A172B467C8A00B92BE3 /* SettingsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsObject.swift; sourceTree = "<group>"; };
+		F76FABF62B961E7600534C11 /* URL+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+.swift"; sourceTree = "<group>"; };
+		F76FABF82B961E9200534C11 /* Logger+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+.swift"; sourceTree = "<group>"; };
+		F76FABFA2B961EE500534C11 /* Logger+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+.swift"; sourceTree = "<group>"; };
 		F78063CF2B1FAF4B00D8C2FE /* Sample Novel Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample Novel Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F78063D22B1FAF4B00D8C2FE /* NovelGameSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelGameSampleApp.swift; sourceTree = "<group>"; };
 		F78063D42B1FAF4B00D8C2FE /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -56,6 +95,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F71C5E872B87AB8A008CB62B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F78063CC2B1FAF4B00D8C2FE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -73,6 +119,17 @@
 				F7AFCB292B4D3C4500514333 /* NovelGameChoiceButtonStyle.swift */,
 			);
 			path = Modifier;
+			sourceTree = "<group>";
+		};
+		F71C5E8B2B87AB8A008CB62B /* Asset Download Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F71C5E8C2B87AB8A008CB62B /* BackgroundDownloadHandler.swift */,
+				F76FABF82B961E9200534C11 /* Logger+.swift */,
+				F71C5E8E2B87AB8A008CB62B /* Info.plist */,
+				F71C5E8F2B87AB8A008CB62B /* Asset_Download_Extension.entitlements */,
+			);
+			path = "Asset Download Extension";
 			sourceTree = "<group>";
 		};
 		F72EE36C2B57BB9800A5725A /* Animation */ = {
@@ -97,11 +154,29 @@
 			isa = PBXGroup;
 			children = (
 				F78063E32B20323600D8C2FE /* NovelSceneControler.swift */,
+				F76016DD2B87C0F500B5BAEE /* AssetsManager.swift */,
 				F76E6A172B467C8A00B92BE3 /* SettingsObject.swift */,
+				F76FABFA2B961EE500534C11 /* Logger+.swift */,
 				F7E793672B528A4F008F0C9D /* SaveData.swift */,
 				F72EE3702B583D7700A5725A /* FocusedValues.swift */,
 			);
 			path = Process;
+			sourceTree = "<group>";
+		};
+		F76FABF52B961E4A00534C11 /* Shered */ = {
+			isa = PBXGroup;
+			children = (
+				F76FABF62B961E7600534C11 /* URL+.swift */,
+			);
+			path = Shered;
+			sourceTree = "<group>";
+		};
+		F76FABFF2B962C6800534C11 /* AssetsList */ = {
+			isa = PBXGroup;
+			children = (
+				F78063E92B2221D400D8C2FE /* game.json */,
+			);
+			path = AssetsList;
 			sourceTree = "<group>";
 		};
 		F78063C62B1FAF4B00D8C2FE = {
@@ -109,6 +184,9 @@
 			children = (
 				F752DB552B5BEC0B00A95AFC /* README.md */,
 				F78063D12B1FAF4B00D8C2FE /* Sample Novel Game */,
+				F71C5E8B2B87AB8A008CB62B /* Asset Download Extension */,
+				F76FABF52B961E4A00534C11 /* Shered */,
+				F76FABFF2B962C6800534C11 /* AssetsList */,
 				F78063D02B1FAF4B00D8C2FE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				F78063CF2B1FAF4B00D8C2FE /* Sample Novel Game.app */,
+				F71C5E8A2B87AB8A008CB62B /* Asset Download Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,11 +203,11 @@
 		F78063D12B1FAF4B00D8C2FE /* Sample Novel Game */ = {
 			isa = PBXGroup;
 			children = (
+				F76016DC2B87C00500B5BAEE /* Info.plist */,
 				F78063D22B1FAF4B00D8C2FE /* NovelGameSampleApp.swift */,
 				F78063E52B20861B00D8C2FE /* Commands.swift */,
 				F78063EB2B2232C000D8C2FE /* UI */,
 				F76E6A162B467B2E00B92BE3 /* Process */,
-				F78063E92B2221D400D8C2FE /* game.json */,
 				F78063D62B1FAF4C00D8C2FE /* Assets.xcassets */,
 				F78063D82B1FAF4C00D8C2FE /* Novel_Game_Sample.entitlements */,
 				F78063D92B1FAF4C00D8C2FE /* Preview Content */,
@@ -162,6 +241,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F71C5E892B87AB8A008CB62B /* Asset Download Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F71C5E932B87AB8A008CB62B /* Build configuration list for PBXNativeTarget "Asset Download Extension" */;
+			buildPhases = (
+				F71C5E862B87AB8A008CB62B /* Sources */,
+				F71C5E872B87AB8A008CB62B /* Frameworks */,
+				F71C5E882B87AB8A008CB62B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Asset Download Extension";
+			productName = "Asset Download Extension";
+			productReference = F71C5E8A2B87AB8A008CB62B /* Asset Download Extension.appex */;
+			productType = "com.apple.product-type.extensionkit-extension";
+		};
 		F78063CE2B1FAF4B00D8C2FE /* Sample Novel Game */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F78063DE2B1FAF4C00D8C2FE /* Build configuration list for PBXNativeTarget "Sample Novel Game" */;
@@ -169,10 +265,12 @@
 				F78063CB2B1FAF4B00D8C2FE /* Sources */,
 				F78063CC2B1FAF4B00D8C2FE /* Frameworks */,
 				F78063CD2B1FAF4B00D8C2FE /* Resources */,
+				F71C5E822B87AB58008CB62B /* Embed ExtensionKit Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F71C5E912B87AB8A008CB62B /* PBXTargetDependency */,
 			);
 			name = "Sample Novel Game";
 			productName = "Novel Game Sample";
@@ -186,9 +284,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1510;
+				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					F71C5E892B87AB8A008CB62B = {
+						CreatedOnToolsVersion = 15.2;
+					};
 					F78063CE2B1FAF4B00D8C2FE = {
 						CreatedOnToolsVersion = 15.1;
 					};
@@ -208,17 +309,24 @@
 			projectRoot = "";
 			targets = (
 				F78063CE2B1FAF4B00D8C2FE /* Sample Novel Game */,
+				F71C5E892B87AB8A008CB62B /* Asset Download Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F71C5E882B87AB8A008CB62B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F78063CD2B1FAF4B00D8C2FE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F78063DB2B1FAF4C00D8C2FE /* Preview Assets.xcassets in Resources */,
-				F786FA5D2B41D4AE005C8C72 /* game.json in Resources */,
 				F78063D72B1FAF4C00D8C2FE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,23 +334,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F71C5E862B87AB8A008CB62B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F76FABF92B961E9200534C11 /* Logger+.swift in Sources */,
+				F71C5E8D2B87AB8A008CB62B /* BackgroundDownloadHandler.swift in Sources */,
+				F76FABFE2B9621A700534C11 /* URL+.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F78063CB2B1FAF4B00D8C2FE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F72EE3932B5AF0EA00A5725A /* DialogSettingsParts.swift in Sources */,
 				F76E6A182B467C8A00B92BE3 /* SettingsObject.swift in Sources */,
+				F76016DE2B87C0F500B5BAEE /* AssetsManager.swift in Sources */,
 				F7E7936A2B52A04A008F0C9D /* LoadDataView.swift in Sources */,
 				F78063E22B202F7F00D8C2FE /* SettingsView.swift in Sources */,
 				F786FA5E2B41D4B4005C8C72 /* NovelSceneControler.swift in Sources */,
 				F7E793682B528A4F008F0C9D /* SaveData.swift in Sources */,
 				F72EE3972B5B745A00A5725A /* HelpView.swift in Sources */,
+				F76FABFB2B961EE500534C11 /* Logger+.swift in Sources */,
 				F78063D52B1FAF4B00D8C2FE /* GameView.swift in Sources */,
 				F70B2E502B4BF8FC002C8B2C /* NovelGameTitleButtonStyle.swift in Sources */,
 				F78063D32B1FAF4B00D8C2FE /* NovelGameSampleApp.swift in Sources */,
 				F70B2E4E2B4BEB3E002C8B2C /* KeyFrame.swift in Sources */,
 				F78063E62B20861B00D8C2FE /* Commands.swift in Sources */,
 				F72EE36F2B57BC8900A5725A /* SaveDataCard.swift in Sources */,
+				F76FABF72B961E7600534C11 /* URL+.swift in Sources */,
 				F7AFCB2A2B4D3C4500514333 /* NovelGameChoiceButtonStyle.swift in Sources */,
 				F78063E82B21B13F00D8C2FE /* TitleView.swift in Sources */,
 				F72EE3952B5AF1A100A5725A /* GeneralSettingsParts.swift in Sources */,
@@ -252,7 +373,82 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F71C5E912B87AB8A008CB62B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F71C5E892B87AB8A008CB62B /* Asset Download Extension */;
+			targetProxy = F71C5E902B87AB8A008CB62B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		F71C5E942B87AB8A008CB62B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Asset Download Extension/Asset_Download_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7AA87AZ875;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Asset Download Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Asset Download Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.KCs-NovelGameSample-1.Novel-Game-Sample.Asset-Download-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+			};
+			name = Debug;
+		};
+		F71C5E952B87AB8A008CB62B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Asset Download Extension/Asset_Download_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7AA87AZ875;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Asset Download Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Asset Download Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.KCs-NovelGameSample-1.Novel-Game-Sample.Asset-Download-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		F78063DC2B1FAF4C00D8C2FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -372,6 +568,7 @@
 		F78063DF2B1FAF4C00D8C2FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Sample Novel Game/Novel_Game_Sample.entitlements";
@@ -383,6 +580,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 Keisuke Chinone";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -413,6 +612,7 @@
 		F78063E02B1FAF4C00D8C2FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Sample Novel Game/Novel_Game_Sample.entitlements";
@@ -424,6 +624,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 Keisuke Chinone";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -454,6 +656,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F71C5E932B87AB8A008CB62B /* Build configuration list for PBXNativeTarget "Asset Download Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F71C5E942B87AB8A008CB62B /* Debug */,
+				F71C5E952B87AB8A008CB62B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F78063CA2B1FAF4B00D8C2FE /* Build configuration list for PBXProject "Sample Novel Game" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

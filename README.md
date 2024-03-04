@@ -23,6 +23,22 @@ Koorogi(https://dova-s.jp/_contents/author/profile010.html)
 - https://amachamusic.chagasi.com/music_tanoshiibouken.html  
 Amacha Music Studio(https://amachamusic.chagasi.com/index.html)
 
+## Assets CDN URL
+### game.json
+- https://storage.googleapis.com/novel-game-asset/game.json
+### Do you see our lines?.wav
+- https://storage.googleapis.com/novel-game-asset/Do%20you%20see%20our%20lines%3F.wav
+### josei_04_a.png
+- https://storage.googleapis.com/novel-game-asset/josei_04_a.png
+### josei_06_a.png
+- https://storage.googleapis.com/novel-game-asset/josei_06_a.png
+### sora_01.jpg
+- https://storage.googleapis.com/novel-game-asset/sora_01.jpg
+### tanoshiibouken.mp3
+- https://storage.googleapis.com/novel-game-asset/tanoshiibouken.mp3
+### かえるのピアノ.mp3
+- https://storage.googleapis.com/novel-game-asset/%E3%81%8B%E3%81%88%E3%82%8B%E3%81%AE%E3%83%92%E3%82%9A%E3%82%A2%E3%83%8E.mp3
+
 ## Contribution
 1. Fork it
 2. Create your feature branch

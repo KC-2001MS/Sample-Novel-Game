@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppGroupIdentifier</key>
+	<string>group.com.KCs-NovelGameSample-1.Novel-Game-Sample</string>
+	<key>BAEssentialMaxInstallSize</key>
+	<integer>5656</integer>
+	<key>BAInitialDownloadRestrictions</key>
+	<dict>
+		<key>BADownloadAllowance</key>
+		<integer>5656</integer>
+		<key>BADownloadDomainAllowList</key>
+		<array>
+			<string>storage.googleapis.com</string>
+		</array>
+		<key>BAEssentialDownloadAllowance</key>
+		<integer>5656</integer>
+	</dict>
+	<key>BAManifestURL</key>
+	<string>https://storage.googleapis.com/novel-game-asset/game.json</string>
+	<key>BAMaxInstallSize</key>
+	<integer>5656</integer>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+	</array>
+</dict>
+</plist>
