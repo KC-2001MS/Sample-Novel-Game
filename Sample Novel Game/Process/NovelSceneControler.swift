@@ -11,6 +11,7 @@ import Observation
 import AVFoundation
 import SwiftUI
 import SwiftData
+import OSLog
 
 @Observable
 final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
@@ -28,10 +29,8 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
         didSet {
             if let num = id?.number, num > 0 {
                 id?.number! -= 1
-                print("-1")
             } else {
                 id?.number = 0
-                print("0")
             }
         }
     }
@@ -73,6 +72,8 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
     var waitingTime: Double
     
     init(scenes: Array<NovelScene>, id: NovelID) {
+        self.timer = nil
+        self.indexValue = 0
         self.scenes = scenes
         self.screens = []
         self.initID = id
@@ -114,7 +115,7 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
                     player?.prepareToPlay()
                     player?.play()
                 } catch {
-                    print("音楽ファイルの再生に失敗しました")
+                    Logger.app.error("Loop playback of music file failed")
                 }
             } else {
                 player?.stop()
@@ -135,11 +136,33 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
                     player?.volume = 1.0
                     player?.play()
                 } catch {
-                    print("音楽ファイルの再生に失敗しました")
+                    Logger.app.error("Failed to play music file")
                 }
             } else {
                 player?.stop()
                 player = nil
+            }
+        }
+    }
+    
+    private var indexValue = 0
+    
+    private var timer: Timer?
+    
+    //For temporary implementation, the code in the following URL is used almost as is. Later, it will be modified to fit this project.
+    //https://www.youtube.com/watch?v=ntRpTt7dLUM
+    //If a line is sent to the next line before it is finished being read, there is a bug in the display of the line.
+    private func animate(string: String, time: Double) {
+        timer = Timer.scheduledTimer(withTimeInterval: time / Double(string.count), repeats: true){ timer in
+            if !string.isEmpty {
+                if self.indexValue < string.count {
+                    self.quote += String(string[string.index(string.startIndex, offsetBy: self.indexValue)])
+                    self.indexValue += 1
+                } else {
+                    timer.invalidate()
+                }
+            } else {
+                timer.invalidate()
             }
         }
     }
@@ -164,12 +187,15 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
     }
     
     func next() {
+        timer?.invalidate()
+        self.timer = nil
+        self.indexValue = 0
         if let scene = screens[safe: id?.number ?? 0] {
             playLoopingSound(player: &BGMPlayer, assetName: scene.BGM?.assetName)
             playLoopingSound(player: &soundEffectPlayer, assetName: scene.soundEffect)
             playSound(player: &voicePlayer, assetName: scene.voice)
             self.talker = scene.talker ?? ""
-            self.quote = scene.quote ?? ""
+            self.quote = ""
             self.characters = scene.characters
             self.background = scene.background ?? ""
             self.BGMName = scene.BGM?.name ?? BGMName
@@ -177,6 +203,7 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             self.id?.number = 1 + (id?.number ?? 0)
             self.time =  (voicePlayer?.duration ?? 0) + waitingTime
             self.nextID = scene.nextID
+            animate(string: scene.quote ?? "", time: voicePlayer?.duration ?? Double(scene.quote?.count ?? 0) * 0.1)
         } else {
             if nextID != nil && choices == nil {
                 id = nextID
@@ -190,6 +217,9 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
     }
     
     func last() {
+        timer?.invalidate()
+        self.timer = nil
+        self.indexValue = 0
         if let scene = screens.last {
             playLoopingSound(player: &BGMPlayer, assetName: scene.BGM?.assetName)
             playLoopingSound(player: &soundEffectPlayer, assetName: scene.soundEffect)
@@ -207,6 +237,9 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
     }
     
     func back() {
+        timer?.invalidate()
+        self.timer = nil
+        self.indexValue = 0
         if let scene = screens[safe: (id?.number ?? 0) - 2] {
             playLoopingSound(player: &BGMPlayer, assetName: scene.BGM?.assetName)
             playLoopingSound(player: &soundEffectPlayer, assetName: scene.soundEffect)
@@ -224,6 +257,9 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
     }
     
     func first() {
+        timer?.invalidate()
+        self.timer = nil
+        self.indexValue = 0
         if let scene = screens.first {
             playLoopingSound(player: &BGMPlayer, assetName: scene.BGM?.assetName)
             playLoopingSound(player: &soundEffectPlayer, assetName: scene.soundEffect)

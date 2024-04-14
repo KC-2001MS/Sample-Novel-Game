@@ -46,19 +46,19 @@ class AssetsManager: NSObject {
         
         BADownloadManager.shared.withExclusiveControl { lockAcquired, error in
             guard lockAcquired else {
-                Logger.app.warning("Failed to acquire lock: \(error)")
+                Logger.assets.warning("Failed to acquire lock: \(error)")
                 return
             }
             
             do {
-                print("startDownload")
+                Logger.assets.info("Start download")
                 let download: BADownload
                 let currentDownloads = try BADownloadManager.shared.fetchCurrentDownloads()
                 
                 // If this session is already being downloaded, promote it to the foreground.
                 if let existingDownload = currentDownloads.first(where: { $0.identifier == "config" }) {
                     download = existingDownload
-                    print("downloading...")
+                    Logger.assets.info("downloading...")
                 } else {
                     //https://developer.apple.com/forums/thread/741206
                     download = BAURLDownload(
@@ -69,17 +69,16 @@ class AssetsManager: NSObject {
                         applicationGroupIdentifier: "group.com.KCs-NovelGameSample-1.Novel-Game-Sample",
                         priority: .default
                     )
-                    print("downloading...+")
                 }
                 
                 guard download.state != .failed else {
-                    Logger.app.warning("Download config is in the failed state.")
+                    Logger.assets.warning("Download config is in the failed state.")
                     return
                 }
                 
                 try BADownloadManager.shared.startForegroundDownload(download)
             } catch {
-                Logger.app.warning("Failed to start download for config")
+                Logger.assets.warning("Failed to start download for config")
             }
         }
     }
@@ -88,22 +87,22 @@ class AssetsManager: NSObject {
 extension AssetsManager: BADownloadManagerDelegate {
     func download(_ download: BADownload, finishedWithFileURL fileURL: URL) {
         do {
-            print("downloaded")
+            Logger.assets.info("Downloaded")
             _ = try FileManager.default.replaceItemAt(URL.jsonURL, withItemAt: fileURL)
             scenes = Bundle.main.decodeJSON(URL.jsonURL)
         } catch {
-            Logger.app.error("Failed to move downloaded file: \(error)")
+            Logger.assets.error("Failed to move downloaded file: \(error)")
             return
         }
     }
     
     func download(_ download: BADownload, failedWithError error: Error) {
         guard type(of: download) == BAURLDownload.self else {
-            Logger.app.warning("Download of unsupported type failed: \(download.identifier). \(error)")
+            Logger.assets.warning("Download of unsupported type failed: \(download.identifier). \(error)")
             return
         }
         
-        Logger.app.warning("Download failed: \(error)")
+        Logger.assets.warning("Download failed: \(error)")
     }
     
     func download(_ download: BADownload, didReceive challenge: URLAuthenticationChallenge) async
@@ -112,10 +111,10 @@ extension AssetsManager: BADownloadManagerDelegate {
     }
     
     func downloadDidBegin(_ download: BADownload) {
-        print("Began")
+        Logger.assets.info("Began")
     }
     
     func downloadDidPause(_ download: BADownload) {
-        print("Paause")
+        Logger.assets.info("Paause")
     }
 }

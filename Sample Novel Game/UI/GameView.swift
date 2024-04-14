@@ -8,6 +8,7 @@
 
 import SwiftUI
 import SwiftData
+import OSLog
 
 struct GameView: View {
     @Environment(\.modelContext) private var modelContext
@@ -33,7 +34,7 @@ struct GameView: View {
         self.isShowingToolbar = true
         self.isOpeningSettings = false
         novelColtoroler.endAction = {
-            print("end")
+            Logger.app.info("Ended action")
         }
     }
     
@@ -498,13 +499,13 @@ struct GameView: View {
                     novelColtoroler.autoplayTime = 0
                     self.timer = Timer.scheduledTimer(withTimeInterval:0.1, repeats: true){ _ in
                         novelColtoroler.autoplayTime += 0.1
-                        print("now time:\(novelColtoroler.autoplayTime)")
+                        Logger.app.info("Now time : \(novelColtoroler.autoplayTime)")
                     }
                     _ = try await Task.sleep(for: .seconds(Double(novelColtoroler.time)))
                     timer?.invalidate()
                     novelColtoroler.next()
                     timer = nil
-                    print("time: reset")
+                    Logger.app.info("Reset time")
                 }
             }
         }

@@ -10,5 +10,7 @@ import Foundation
 import OSLog
 
 public extension Logger {
+    static let assets = Logger(subsystem: "group.com.KCs-NovelGameSample-1.Novel-Game-Sample", category: "assets")
+    
     static let app = Logger(subsystem: "group.com.KCs-NovelGameSample-1.Novel-Game-Sample", category: "app")
 }
