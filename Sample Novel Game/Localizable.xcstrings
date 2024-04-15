@@ -1,0 +1,181 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lld - %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld - %2$lld"
+          }
+        }
+      }
+    },
+    "Add 1 second" : {
+
+    },
+    "Auto Play" : {
+
+    },
+    "Back to Title" : {
+
+    },
+    "Backward" : {
+
+    },
+    "Backward Frame" : {
+
+    },
+    "Backword" : {
+
+    },
+    "BGM" : {
+
+    },
+    "Bug Report Page" : {
+
+    },
+    "Bug Report URL" : {
+      "comment" : "Bug Report Page"
+    },
+    "Button" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Check at the time of loading." : {
+
+    },
+    "Check when returning to the title." : {
+
+    },
+    "Continue" : {
+
+    },
+    "Dialog" : {
+
+    },
+    "Do you want to load data?" : {
+
+    },
+    "Don't ask again" : {
+
+    },
+    "Done" : {
+
+    },
+    "Font Size" : {
+
+    },
+    "Forward" : {
+
+    },
+    "Forward Frame" : {
+
+    },
+    "Gear" : {
+
+    },
+    "General" : {
+
+    },
+    "Go to the title" : {
+
+    },
+    "Help" : {
+
+    },
+    "Hide Toolbar" : {
+
+    },
+    "https://kc-2001ms.github.io/en/" : {
+      "comment" : "Iroiro's Top Page"
+    },
+    "https://kc-2001ms.github.io/en/privacy.html" : {
+      "comment" : "Iroiro's Top Page"
+    },
+    "If you find any problems with this application, please report them via this URL or email." : {
+
+    },
+    "In this application you will enjoy a sample novel game." : {
+
+    },
+    "Letter" : {
+
+    },
+    "Load" : {
+
+    },
+    "No Save Data" : {
+
+    },
+    "Novel Game Sample Help" : {
+
+    },
+    "Open the Web Site" : {
+
+    },
+    "Pause" : {
+
+    },
+    "Privacy Policy" : {
+
+    },
+    "Privacy Policy Page" : {
+
+    },
+    "Progression" : {
+
+    },
+    "Quote" : {
+
+    },
+    "Rectangle" : {
+
+    },
+    "Reduce 1 second" : {
+
+    },
+    "Report bugs" : {
+
+    },
+    "Sample Novel Game" : {
+
+    },
+    "Save" : {
+
+    },
+    "Settings" : {
+
+    },
+    "Shall we return to the title?" : {
+
+    },
+    "Sound effect" : {
+
+    },
+    "Start" : {
+
+    },
+    "Talker" : {
+
+    },
+    "Voice" : {
+
+    },
+    "Volume" : {
+
+    },
+    "Waiting Time" : {
+
+    },
+    "Waiting Time: %lf" : {
+
+    },
+    "You can review the privacy policy for this application at the following site" : {
+
+    }
+  },
+  "version" : "1.0"
+}

@@ -153,10 +153,11 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
     //https://www.youtube.com/watch?v=ntRpTt7dLUM
     //If a line is sent to the next line before it is finished being read, there is a bug in the display of the line.
     private func animate(string: String, time: Double) {
-        timer = Timer.scheduledTimer(withTimeInterval: time / Double(string.count), repeats: true){ timer in
-            if !string.isEmpty {
-                if self.indexValue < string.count {
-                    self.quote += String(string[string.index(string.startIndex, offsetBy: self.indexValue)])
+        let text = String(localized: String.LocalizationValue(string))
+        timer = Timer.scheduledTimer(withTimeInterval: time / Double(text.count), repeats: true){ timer in
+            if !text.isEmpty {
+                if self.indexValue < text.count {
+                    self.quote += String(text[text.index(text.startIndex, offsetBy: self.indexValue)])
                     self.indexValue += 1
                 } else {
                     timer.invalidate()
@@ -194,11 +195,11 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             playLoopingSound(player: &BGMPlayer, assetName: scene.BGM?.assetName)
             playLoopingSound(player: &soundEffectPlayer, assetName: scene.soundEffect)
             playSound(player: &voicePlayer, assetName: scene.voice)
-            self.talker = scene.talker ?? ""
+            self.talker = String(localized: String.LocalizationValue(scene.talker ?? ""))
             self.quote = ""
             self.characters = scene.characters
             self.background = scene.background ?? ""
-            self.BGMName = scene.BGM?.name ?? BGMName
+            self.BGMName = String(localized: String.LocalizationValue(scene.BGM?.name ?? BGMName))
             self.choices = scene.choices
             self.id?.number = 1 + (id?.number ?? 0)
             self.time =  (voicePlayer?.duration ?? 0) + waitingTime
@@ -224,11 +225,11 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             playLoopingSound(player: &BGMPlayer, assetName: scene.BGM?.assetName)
             playLoopingSound(player: &soundEffectPlayer, assetName: scene.soundEffect)
             playSound(player: &voicePlayer, assetName: scene.voice)
-            self.talker = scene.talker ?? ""
-            self.quote = scene.quote ?? ""
+            self.talker = String(localized: String.LocalizationValue(scene.talker ?? ""))
+            self.quote = String(localized: String.LocalizationValue(scene.quote ?? ""))
             self.characters = scene.characters
             self.background = scene.background ?? ""
-            self.BGMName = scene.BGM?.name ?? BGMName
+            self.BGMName = String(localized: String.LocalizationValue(scene.BGM?.name ?? BGMName))
             self.choices = scene.choices
             self.id?.number = screens.count
             self.time = Double(scene.additionalTime ?? 100)
@@ -244,11 +245,11 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             playLoopingSound(player: &BGMPlayer, assetName: scene.BGM?.assetName)
             playLoopingSound(player: &soundEffectPlayer, assetName: scene.soundEffect)
             playSound(player: &voicePlayer, assetName: scene.voice)
-            self.talker = scene.talker ?? ""
-            self.quote = scene.quote ?? ""
+            self.talker = String(localized: String.LocalizationValue(scene.talker ?? ""))
+            self.quote = String(localized: String.LocalizationValue(scene.quote ?? ""))
             self.characters = scene.characters
             self.background = scene.background ?? ""
-            self.BGMName = scene.BGM?.name ?? BGMName
+            self.BGMName = String(localized: String.LocalizationValue(scene.BGM?.name ?? BGMName))
             self.choices = scene.choices
             self.id?.number = (id?.number ?? 0) - 1
             self.time = Double(scene.additionalTime ?? 100)
@@ -264,11 +265,11 @@ final class NovelSceneControler: NSObject, AVAudioPlayerDelegate {
             playLoopingSound(player: &BGMPlayer, assetName: scene.BGM?.assetName)
             playLoopingSound(player: &soundEffectPlayer, assetName: scene.soundEffect)
             playSound(player: &voicePlayer, assetName: scene.voice)
-            self.talker = scene.talker ?? ""
-            self.quote = scene.quote ?? ""
+            self.talker = String(localized: String.LocalizationValue(scene.talker ?? ""))
+            self.quote = String(localized: String.LocalizationValue(scene.quote ?? ""))
             self.characters = scene.characters
             self.background = scene.background ?? ""
-            self.BGMName = scene.BGM?.name ?? BGMName
+            self.BGMName = String(localized: String.LocalizationValue(scene.BGM?.name ?? BGMName))
             self.choices = scene.choices
             self.id?.number = 1
             self.time = Double(scene.additionalTime ?? 100)
