@@ -70,6 +70,7 @@ struct LoadDataView: View {
 }
 
 #Preview {
-    @State var novelColtoroler = NovelSceneControler(scenes: Bundle.main.decodeJSON("game.json"), id: NovelID())
-    return LoadDataView(novelColtoroler: novelColtoroler)
+    @Previewable @State var novelColtoroler = NovelSceneControler(scenes: Bundle.main.decodeJSON("game.json"), id: NovelID())
+    
+    LoadDataView(novelColtoroler: novelColtoroler)
 }

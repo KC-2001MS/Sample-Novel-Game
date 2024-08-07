@@ -38,9 +38,6 @@
     "Bug Report URL" : {
       "comment" : "Bug Report Page"
     },
-    "Button" : {
-
-    },
     "Cancel" : {
 
     },
@@ -63,6 +60,9 @@
 
     },
     "Done" : {
+
+    },
+    "Export" : {
 
     },
     "Font Size" : {
@@ -96,6 +96,9 @@
       "comment" : "Iroiro's Top Page"
     },
     "If you find any problems with this application, please report them via this URL or email." : {
+
+    },
+    "Import" : {
 
     },
     "In this application you will enjoy a sample novel game." : {
@@ -144,6 +147,9 @@
 
     },
     "Save" : {
+
+    },
+    "Save Data" : {
 
     },
     "Settings" : {

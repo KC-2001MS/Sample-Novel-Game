@@ -92,6 +92,7 @@ struct SaveDataCard: View {
 }
 
 #Preview {
-    @State var novelColtoroler = NovelSceneControler(scenes: Bundle.main.decodeJSON("game.json"), id: NovelID())
-    return SaveDataCard(saveData: SaveData(date: Date(), screen: NovelID()), novelColtoroler: novelColtoroler, dismissAction: {})
+    @Previewable @State var novelColtoroler = NovelSceneControler(scenes: Bundle.main.decodeJSON("game.json"), id: NovelID())
+    
+    SaveDataCard(saveData: SaveData(date: Date(), screen: NovelID()), novelColtoroler: novelColtoroler, dismissAction: {})
 }

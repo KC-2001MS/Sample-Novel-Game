@@ -12,7 +12,7 @@
 	<array>
 		<string>group.com.KCs-NovelGameSample-1.Novel-Game-Sample</string>
 	</array>
-	<key>com.apple.security.files.user-selected.read-only</key>
+	<key>com.apple.security.files.user-selected.read-write</key>
 	<true/>
 </dict>
 </plist>

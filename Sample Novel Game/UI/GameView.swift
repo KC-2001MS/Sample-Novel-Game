@@ -556,5 +556,6 @@ struct GameView: View {
 
 #Preview {
     let previewScenes: Array<NovelScene> = Bundle.main.decodeJSON("game.json")
-    return GameView(scenes: previewScenes, id: NovelID())
+     
+    GameView(scenes: previewScenes, id: NovelID())
 }

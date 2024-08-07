@@ -40,11 +40,7 @@ Amacha Music Studio(https://amachamusic.chagasi.com/index.html)
 - https://storage.googleapis.com/novel-game-asset/%E3%81%8B%E3%81%88%E3%82%8B%E3%81%AE%E3%83%92%E3%82%9A%E3%82%A2%E3%83%8E.mp3
 
 ## Contribution
-1. Fork it
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create new Pull Request
+See [CONTRIBUTING.md](https://github.com/KC-2001MS/Sample-Novel-Game/blob/main/CONTRIBUTING.md) if you want to make a contribution.
 
 ## Licence
 

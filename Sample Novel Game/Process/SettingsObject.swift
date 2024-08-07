@@ -79,4 +79,35 @@ class SettingsObject {
         self.isDisplayingDialogWhenGoingBack = false
         self.isDisplayingDialogWhenLoading = false
     }
+    
+    func ExportAppData(data: Array<SaveData>) -> String {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        encoder.dateEncodingStrategy = .iso8601
+        guard let jsonData = try? encoder.encode(data) else {
+            fatalError("Failed to encode to JSON.")
+        }
+        
+        return String(bytes: jsonData, encoding: .utf8) ?? ""
+    }
+    
+    func importAppData(url: URL) -> Array<SaveData> {
+        //iOSのアクセス権エラーのために追加した部分
+        guard url.startAccessingSecurityScopedResource() else {
+            // Handle the failure here.
+            return []
+        }
+        
+        // We have to stop accessing the resource no matter what
+        defer { url.stopAccessingSecurityScopedResource() }
+        //追加部分
+        let decoder = JSONDecoder()
+        let jsonStr = try! String(contentsOf: url,encoding:.utf8)
+        let jsonData = String(jsonStr).data(using: .utf8)!
+        
+        // JSONデータを構造体に準拠した形式に変換
+        let settingData = try! decoder.decode(Array<SaveData>.self, from: jsonData)
+        
+        return settingData
+    }
 }

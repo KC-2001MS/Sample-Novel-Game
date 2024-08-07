@@ -35,17 +35,19 @@ struct SettingsView: View {
                 .tag(Tabs.dialog)
                 .accessibilityInputLabels(["Dialog", "Rectangle"])
         }
-#if os(macOS) || os(visionOS)
+#if  os(visionOS)
         .frame(minWidth: 500, minHeight: 700)
+#elseif os(macOS)
+        .frame(width: 500)
 #endif
-        
         .preferredColorScheme(.dark)
-        
+        .containerBackground(.thickMaterial, for: .window)
+        .presentationSizing(.form)
     }
 }
 
 #Preview {
-    @State var settings = SettingsObject()
+    @Previewable @State var settings = SettingsObject()
     
     return SettingsView().environment(settings)
 }

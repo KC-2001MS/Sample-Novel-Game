@@ -22,6 +22,7 @@
 		F76FABF92B961E9200534C11 /* Logger+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76FABF82B961E9200534C11 /* Logger+.swift */; };
 		F76FABFB2B961EE500534C11 /* Logger+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76FABFA2B961EE500534C11 /* Logger+.swift */; };
 		F76FABFE2B9621A700534C11 /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76FABF62B961E7600534C11 /* URL+.swift */; };
+		F77B08EF2C02DFD1000C0A64 /* JsonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77B08EE2C02DFD1000C0A64 /* JsonFile.swift */; };
 		F78063D32B1FAF4B00D8C2FE /* NovelGameSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063D22B1FAF4B00D8C2FE /* NovelGameSampleApp.swift */; };
 		F78063D52B1FAF4B00D8C2FE /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78063D42B1FAF4B00D8C2FE /* GameView.swift */; };
 		F78063D72B1FAF4C00D8C2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F78063D62B1FAF4C00D8C2FE /* Assets.xcassets */; };
@@ -79,6 +80,7 @@
 		F76FABF62B961E7600534C11 /* URL+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+.swift"; sourceTree = "<group>"; };
 		F76FABF82B961E9200534C11 /* Logger+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+.swift"; sourceTree = "<group>"; };
 		F76FABFA2B961EE500534C11 /* Logger+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+.swift"; sourceTree = "<group>"; };
+		F77B08EE2C02DFD1000C0A64 /* JsonFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFile.swift; sourceTree = "<group>"; };
 		F78063CF2B1FAF4B00D8C2FE /* Sample Novel Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample Novel Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F78063D22B1FAF4B00D8C2FE /* NovelGameSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelGameSampleApp.swift; sourceTree = "<group>"; };
 		F78063D42B1FAF4B00D8C2FE /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -92,6 +94,9 @@
 		F78063E92B2221D400D8C2FE /* game.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = game.json; sourceTree = "<group>"; };
 		F7AFCB292B4D3C4500514333 /* NovelGameChoiceButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelGameChoiceButtonStyle.swift; sourceTree = "<group>"; };
 		F7C513E62BCD438500CA2ACB /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		F7D0EE882C62FFAB00FEAC14 /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
+		F7D0EE892C62FFAB00FEAC14 /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
+		F7D0EE8A2C62FFAB00FEAC14 /* CONTRIBUTORS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTORS.md; sourceTree = "<group>"; };
 		F7E793672B528A4F008F0C9D /* SaveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveData.swift; sourceTree = "<group>"; };
 		F7E793692B52A04A008F0C9D /* LoadDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDataView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,6 +190,9 @@
 			isa = PBXGroup;
 			children = (
 				F752DB552B5BEC0B00A95AFC /* README.md */,
+				F7D0EE882C62FFAB00FEAC14 /* CODE_OF_CONDUCT.md */,
+				F7D0EE892C62FFAB00FEAC14 /* CONTRIBUTING.md */,
+				F7D0EE8A2C62FFAB00FEAC14 /* CONTRIBUTORS.md */,
 				F78063D12B1FAF4B00D8C2FE /* Sample Novel Game */,
 				F71C5E8B2B87AB8A008CB62B /* Asset Download Extension */,
 				F76FABF52B961E4A00534C11 /* Shered */,
@@ -208,6 +216,7 @@
 				F76016DC2B87C00500B5BAEE /* Info.plist */,
 				F78063D22B1FAF4B00D8C2FE /* NovelGameSampleApp.swift */,
 				F78063E52B20861B00D8C2FE /* Commands.swift */,
+				F77B08EE2C02DFD1000C0A64 /* JsonFile.swift */,
 				F7C513E62BCD438500CA2ACB /* Localizable.xcstrings */,
 				F78063EB2B2232C000D8C2FE /* UI */,
 				F76E6A162B467B2E00B92BE3 /* Process */,
@@ -288,7 +297,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					F71C5E892B87AB8A008CB62B = {
 						CreatedOnToolsVersion = 15.2;
@@ -359,6 +368,7 @@
 				F7E7936A2B52A04A008F0C9D /* LoadDataView.swift in Sources */,
 				F78063E22B202F7F00D8C2FE /* SettingsView.swift in Sources */,
 				F786FA5E2B41D4B4005C8C72 /* NovelSceneControler.swift in Sources */,
+				F77B08EF2C02DFD1000C0A64 /* JsonFile.swift in Sources */,
 				F7E793682B528A4F008F0C9D /* SaveData.swift in Sources */,
 				F72EE3972B5B745A00A5725A /* HelpView.swift in Sources */,
 				F76FABFB2B961EE500534C11 /* Logger+.swift in Sources */,
@@ -398,13 +408,13 @@
 				INFOPLIST_FILE = "Asset Download Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Asset Download Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.KCs-NovelGameSample-1.Novel-Game-Sample.Asset-Download-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -417,7 +427,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 1.0;
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -432,13 +442,13 @@
 				INFOPLIST_FILE = "Asset Download Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Asset Download Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.KCs-NovelGameSample-1.Novel-Game-Sample.Asset-Download-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -452,7 +462,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				VALIDATE_PRODUCT = YES;
-				XROS_DEPLOYMENT_TARGET = 1.0;
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
@@ -461,6 +471,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -523,6 +534,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -575,7 +587,6 @@
 		F78063DF2B1FAF4C00D8C2FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Sample Novel Game/Novel_Game_Sample.entitlements";
@@ -600,10 +611,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.KCs-NovelGameSample-1.Novel-Game-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -613,14 +624,13 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 1.0;
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
 		F78063E02B1FAF4C00D8C2FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Sample Novel Game/Novel_Game_Sample.entitlements";
@@ -645,10 +655,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.KCs-NovelGameSample-1.Novel-Game-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -658,7 +668,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 1.0;
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};

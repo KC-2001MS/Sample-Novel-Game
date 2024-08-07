@@ -44,6 +44,7 @@ struct NovelGameSampleApp: App {
         Settings {
             SettingsView()
                 .environment(settings)
+                .modelContainer(modelContainer)
         }
         .windowStyle(.hiddenTitleBar)
 #endif
